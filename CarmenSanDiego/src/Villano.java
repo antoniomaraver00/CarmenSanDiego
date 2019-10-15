@@ -13,6 +13,7 @@ public class Villano {
 		if (!hobbies.contains(hobbie)) {
 			hobbies.add(hobbie);
 			}
+		
 	}
 	
 	public String obtenerSexo() {
