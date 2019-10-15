@@ -9,7 +9,7 @@ public class Villano {
 		return nombre;
 		}
 	
-	public void agregarHobbie(hobbie::String) {
+	public void agregarHobbie(String::hobbie) {
 		if (!hobbies.contains(hobbie)) {
 			hobbies.add(hobbie);
 			}
