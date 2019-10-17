@@ -1,3 +1,4 @@
+import java.util.List;
 
 public class Villano {
 	private String nombre;
@@ -5,10 +6,10 @@ public class Villano {
 	private List<String> hobbies;
 	private List<String> senias;
 	
-	public void setName(String name) {
-		this.nombre=name;
-		}
-	
+	Villano(String nombre, String sexo) {
+		this.nombre = nombre;
+		this.sexo = sexo;
+	}
 	
 	public String obtenerNombre() {
 		return nombre;
@@ -25,9 +26,6 @@ public class Villano {
 			hobbies.add(hobbie);
 			}
 		
-	}
-	public void setSexo(String sexo) {
-		this.sexo=sexo;
 	}
 	
 	public String obtenerSexo() {
