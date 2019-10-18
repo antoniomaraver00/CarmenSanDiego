@@ -7,6 +7,13 @@ public class Pais {
 	private List<Lugar> lugares;
 	private List<Pais> conexiones;
 	
+	Pais(String nombre,List<String> caracteristicas,List<Lugar> lugares){
+		this.nombre=nombre;
+		this.caracteristicas=caracteristicas;
+		this.lugares=lugares;
+		
+	}
+	
 	public void asignarConexion(Pais pais) {
 		conexiones.add(pais);
 	}
