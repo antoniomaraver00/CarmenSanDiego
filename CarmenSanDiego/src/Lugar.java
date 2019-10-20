@@ -12,5 +12,5 @@ public abstract class Lugar {
 		return nombre;
 	}
 	
-	public abstract List<String> obtenerPista(Caso caso);
+	public abstract List<String> obtenerPistas(Caso caso);
 }
