@@ -6,6 +6,8 @@ public class Villano {
 	private String sexo;
 	private List<String> hobbies;
 	private List<String> senias;
+	private int ultimoIndexRandomSenias = -1;
+	private int ultimoIndexRandomHobbies = -1;
 	
 	Villano(String nombre, String sexo) {
 		this.nombre = nombre;
@@ -27,6 +29,22 @@ public class Villano {
 			hobbies.add(hobbie);
 			}
 		
+	}
+	
+	public String obtenerSeniaRandom() {
+		int indexRandom = -1;
+		
+		while( (indexRandom = (int)(Math.random() * senias.size())) == ultimoIndexRandomSenias );
+		
+		return senias.get(indexRandom);
+	}
+	
+	public String obtenerHobbieRandom() {
+		int indexRandom = -1;
+		
+		while( (indexRandom = (int)(Math.random() * hobbies.size())) == ultimoIndexRandomHobbies );
+		
+		return hobbies.get(indexRandom);
 	}
 	
 	public String obtenerSexo() {
