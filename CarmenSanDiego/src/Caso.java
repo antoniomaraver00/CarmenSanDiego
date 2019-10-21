@@ -9,6 +9,7 @@ public class Caso {
 	private String reporte;
 	private String objeto;
 	private Pais paisDelCrimen;
+	private int ultimoLugarEscape;
 	
 	Caso(Villano responsable, List<Pais> rutaDeEscape, String reporte, String objeto, Pais paisDelCrimen) {
 		this.responsable = responsable;
@@ -16,6 +17,8 @@ public class Caso {
 		this.reporte = reporte;
 		this.objeto = objeto;
 		this.paisDelCrimen = paisDelCrimen;
+		
+		ultimoLugarEscape = (int)(Math.random()*(rutaDeEscape.size()-1));
 	}
 
 	public String getReporte() {
@@ -44,14 +47,19 @@ public class Caso {
 	
 	public List<String> obtenerPistasPaisDondeEscapo(Pais paisActual, Lugar lugar) {
 		List<String> pistas = new ArrayList<String>();
-		if(!paisPerteneceRutaDeEscape(paisActual)) {
+		
+		if(esPaisFinal(paisActual)) {
+			if( rutaDeEscape.indexOf(lugar) == ultimoLugarEscape ) {
+				// FALTA IMPLEMENTAR SABER SI TERMINA EL JUEGO O NO DE ACUERDO A SI EMITIO ORDEN CORRECTA
+			} else {
+				pistas.add("Estas cerca...");
+			}
+		} else if(!paisPerteneceRutaDeEscape(paisActual)) {
 			pistas.add("No se nada acerca de aquella persona.");
-		} else if(esPaisFinal(paisActual)) {
-			pistas.add("Estas cerca...");
 		} else {
 			Pais siguientePais = obtenerPaisSiguienteDeRuta(paisActual);
 			
-			List<String> pistaModelada = modelarPista(responsable, siguientePais);
+			List<String> pistaModelada = lugar.modelarPistas(responsable, siguientePais);
 			pistas.addAll(pistaModelada);
 		}
 		
