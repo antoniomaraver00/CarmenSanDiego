@@ -6,6 +6,7 @@ public class Pais {
 	private List<String> caracteristicas;
 	private List<Lugar> lugares;
 	private List<Pais> conexiones;
+	private int ultimoIndexRandomCaracteristicas = -1;
 	
 	Pais(String nombre,List<String> caracteristicas,List<Lugar> lugares){
 		this.nombre=nombre;
@@ -30,6 +31,14 @@ public class Pais {
 		return caracteristicas;
 	}
 
+	public String obtenerCaracteristicaRandom() {
+		int indexRandom = -1;
+		
+		while( (indexRandom = (int)(Math.random() * caracteristicas.size())) == ultimoIndexRandomCaracteristicas );
+		
+		return caracteristicas.get(indexRandom);
+	}
+	
 	public List<Lugar> getLugares() {
 		return lugares;
 	}
