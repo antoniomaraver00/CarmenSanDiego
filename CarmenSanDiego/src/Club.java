@@ -1,5 +1,6 @@
 package CarmenSanDiego.src;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Club extends Lugar {
@@ -9,9 +10,17 @@ public class Club extends Lugar {
 	}
 
 	@Override
-	public List<String> modelarPista(Villano villano, Pais paisSiguiente) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> modelarPistas(Villano villano, Pais paisSiguiente) {
+		List<String> pistas = new ArrayList<String>();
+		
+		pistas.add(villano.obtenerSeniaRandom());
+		pistas.add(villano.obtenerSeniaRandom());
+		
+		if( Math.random() >= 0.3 ) {
+			pistas.add(villano.obtenerHobbieRandom());
+		}
+		
+		return pistas;
 	}
 
 }

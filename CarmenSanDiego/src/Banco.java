@@ -1,5 +1,6 @@
 package CarmenSanDiego.src;
 
+import java.util.ArrayList;
 import java.util.List;
 public class Banco extends Lugar {
 	
@@ -8,8 +9,12 @@ public class Banco extends Lugar {
 	}
 
 	@Override
-	public List<String> modelarPista(Villano villano, Pais paisSiguiente) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> modelarPistas(Villano villano, Pais paisSiguiente) {
+		List<String> pistas = new ArrayList<String>();
+		
+		pistas.add(paisSiguiente.obtenerCaracteristicaRandom());
+		pistas.add(villano.obtenerSeniaRandom());
+		
+		return pistas;
 	}
 }

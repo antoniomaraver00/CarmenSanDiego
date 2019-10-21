@@ -10,20 +10,10 @@ public class Embajada extends Lugar {
 
 	@Override
 	public List<String> modelarPistas(Villano villano, Pais paisSiguiente) {
-		List<String> caracteristicasPais = paisSiguiente.getCaracteristicas();
 		List<String> pistas = new ArrayList<String>();
 		
-		List<Integer> ultimosIndexs = new ArrayList<Integer>();
-		
-		for( int i = 0; i < 2; i++ ) {
-			int index = (int)(Math.random() * caracteristicasPais.size());
-			
-			if(ultimosIndexs.contains(index)) {
-				i--;
-			} else {
-				pistas.add(caracteristicasPais.get(index));
-			}
-		}
+		pistas.add( paisSiguiente.obtenerCaracteristicasRandom() );
+		pistas.add( paisSiguiente.obtenerCaracteristicasRandom() );
 		
 		return pistas;
 	}

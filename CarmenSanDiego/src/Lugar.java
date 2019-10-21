@@ -22,5 +22,5 @@ public abstract class Lugar {
 		return caso.obtenerPistasPaisDondeEscapo(pais, this);
 	}
 	
-	public abstract List<String> modelarPista(Villano villano, Pais paisSiguiente);
+	public abstract List<String> modelarPistas(Villano villano, Pais paisSiguiente);
 }
