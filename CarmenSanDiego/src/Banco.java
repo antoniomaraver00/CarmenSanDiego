@@ -3,13 +3,13 @@ package CarmenSanDiego.src;
 import java.util.List;
 public class Banco extends Lugar {
 	
-	public Banco(String nombre) {
-		super(nombre);
+	public Banco(String nombre, Pais pais) {
+		super(nombre, pais);
 	}
 
-	/* TODO: Implementarla */
 	@Override
-	public List<String> obtenerPistas(Caso caso) {
+	public List<String> modelarPista(Villano villano, Pais paisSiguiente) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

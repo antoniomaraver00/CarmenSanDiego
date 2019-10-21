@@ -31,6 +31,6 @@ public class Villano {
 	
 	public String obtenerSexo() {
 		return sexo;
-		}
+	}
 
 }

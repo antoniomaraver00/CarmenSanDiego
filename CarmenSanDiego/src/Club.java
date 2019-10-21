@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Club extends Lugar {
 
-	public Club(String nombre) {
-		super(nombre);
+	public Club(String nombre, Pais pais) {
+		super(nombre, pais);
 	}
 
-	/* TODO: Implementarla */
 	@Override
-	public List<String> obtenerPistas(Caso caso) {
+	public List<String> modelarPista(Villano villano, Pais paisSiguiente) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
