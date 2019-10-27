@@ -11,7 +11,7 @@ public class Caso {
 	private Pais paisDelCrimen;
 	private int ultimoLugarEscape;
 	
-	Caso(Villano responsable, List<Pais> rutaDeEscape, String reporte, String objeto, Pais paisDelCrimen) {
+	public Caso(Villano responsable, List<Pais> rutaDeEscape, String reporte, String objeto, Pais paisDelCrimen) {
 		this.responsable = responsable;
 		this.rutaDeEscape = rutaDeEscape;
 		this.reporte = reporte;

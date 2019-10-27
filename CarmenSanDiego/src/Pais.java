@@ -8,7 +8,7 @@ public class Pais {
 	private List<Pais> conexiones;
 	private int ultimoIndexRandomCaracteristicas = -1;
 	
-	Pais(String nombre,List<String> caracteristicas,List<Lugar> lugares){
+	public Pais(String nombre,List<String> caracteristicas,List<Lugar> lugares){
 		this.nombre=nombre;
 		this.caracteristicas=caracteristicas;
 		this.lugares=lugares;
