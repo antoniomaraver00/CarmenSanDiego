@@ -45,12 +45,18 @@ public class Caso {
 		return null;
 	}
 	
-	public List<String> obtenerPistasPaisDondeEscapo(Pais paisActual, Lugar lugar) {
+	public List<String> obtenerPistasPaisDondeEscapo(Pais paisActual, Lugar lugar, Detective detective) {
 		List<String> pistas = new ArrayList<String>();
 		
 		if(esPaisFinal(paisActual)) {
 			if( rutaDeEscape.indexOf(lugar) == ultimoLugarEscape ) {
-				// FALTA IMPLEMENTAR SABER SI TERMINA EL JUEGO O NO DE ACUERDO A SI EMITIO ORDEN CORRECTA
+				Villano sospechoso = detective.obtenerSospechosoEnOrden();
+				
+				if(sospechoso == null || sospechoso != responsable) {
+					throw new GameOverException("El sospechoso "+sospechoso.obtenerNombre()+" no es el culpable!");
+				} else {
+					throw new GameWonException("Atrapo al malechor!");
+				}
 			} else {
 				pistas.add("Estas cerca...");
 			}
