@@ -11,7 +11,7 @@ public class Detective {
 	
 	public void viajar(Pais paisDestino)
 	{
-		if(paisActual.hayConexion(paisDestino) || paisActual == null)
+		if(paisActual == null || paisActual.hayConexion(paisDestino))
 		{
 			paisActual = paisDestino;
 		}
