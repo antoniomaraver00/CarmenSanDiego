@@ -1,4 +1,5 @@
 package CarmenSanDiego.src;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pais {
@@ -12,6 +13,7 @@ public class Pais {
 		this.nombre=nombre;
 		this.caracteristicas=caracteristicas;
 		this.lugares=lugares;
+		this.conexiones = new ArrayList<Pais>();
 		
 	}
 	
