@@ -20,4 +20,17 @@ public class DetectiveTest {
 		detective.viajar(argentina);
 		Assert.assertEquals(argentina, detective.obtenerPaisActual());
 	}
+	
+	@Test
+	public void viajar_elDetectiveNoViajaSiNoHayConexion()
+	{
+		Detective SherlockHolmes = new Detective();
+		Pais Argentina = new Pais("Argentina",null, null);
+		SherlockHolmes.viajar(Argentina);
+		Pais Chile = new Pais("Chile", null, null);
+		Pais Inglaterra = new Pais ("Inglaterra", null, null);
+		Argentina.asignarConexion(Chile);
+		SherlockHolmes.viajar(Inglaterra);
+		Assert.assertEquals(Argentina, SherlockHolmes.obtenerPaisActual());
+	}
 }
