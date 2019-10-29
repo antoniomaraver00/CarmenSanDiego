@@ -12,8 +12,8 @@ public class Embajada extends Lugar {
 	public List<String> modelarPistas(Villano villano, Pais paisSiguiente) {
 		List<String> pistas = new ArrayList<String>();
 		
-		pistas.add( paisSiguiente.obtenerCaracteristicasRandom() );
-		pistas.add( paisSiguiente.obtenerCaracteristicasRandom() );
+		pistas.add( paisSiguiente.obtenerCaracteristicaRandom() );
+		pistas.add( paisSiguiente.obtenerCaracteristicaRandom() );
 		
 		return pistas;
 	}
