@@ -18,8 +18,8 @@ public abstract class Lugar {
 		return pais;
 	}
 	
-	public List<String> obtenerPistas(Caso caso) {
-		return caso.obtenerPistasPaisDondeEscapo(pais, this);
+	public List<String> obtenerPistas(Caso caso, Detective detective) {
+		return caso.obtenerPistasPaisDondeEscapo(pais, this, detective);
 	}
 	
 	public abstract List<String> modelarPistas(Villano villano, Pais paisSiguiente);
