@@ -4,15 +4,17 @@ import java.util.List;
 
 public class Pais {
 	private String nombre;
-	private List<String> caracteristicas;
-	private List<Lugar> lugares;
-	private List<Pais> conexiones;
+	private ArrayList<String> caracteristicas;
+	private ArrayList<Lugar> lugares;
+	private ArrayList<Pais> conexiones;
 	private int ultimoIndexRandomCaracteristicas = -1;
 	
 	public Pais(String nombre,List<String> caracteristicas,List<Lugar> lugares){
-		this.nombre=nombre;
-		this.caracteristicas=caracteristicas;
-		this.lugares=lugares;
+		this.nombre = nombre;
+		this.caracteristicas = new ArrayList<String>();
+		this.caracteristicas.addAll(caracteristicas);
+		this.lugares= new ArrayList<Lugar>();
+		this.lugares.addAll(lugares);
 		this.conexiones = new ArrayList<Pais>();
 	}
 	
