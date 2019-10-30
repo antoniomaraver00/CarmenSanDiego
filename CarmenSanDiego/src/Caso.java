@@ -10,8 +10,9 @@ public class Caso {
 	private String objeto;
 	private Pais paisDelCrimen;
 	private Lugar ultimoLugarEscape;
+	private ArrayList<Villano> sospechosos;
 	
-	public Caso(Villano responsable, List<Pais> rutaDeEscape, String reporte, String objeto, Pais paisDelCrimen) {
+	public Caso(Villano responsable, List<Pais> rutaDeEscape, String reporte, String objeto, Pais paisDelCrimen, ArrayList<Villano> sospechosos) {
 		this.responsable = responsable;
 		this.rutaDeEscape = rutaDeEscape;
 		this.reporte = reporte;
@@ -19,6 +20,11 @@ public class Caso {
 		this.paisDelCrimen = paisDelCrimen;
 		
 		this.ultimoLugarEscape = ultimoPaisDeRuta().obtenerLugarRandom();
+		this.sospechosos = sospechosos;
+	}
+
+	public ArrayList<Villano> getSospechosos() {
+		return sospechosos;
 	}
 
 	public String getReporte() {
@@ -28,7 +34,7 @@ public class Caso {
 	public String getObjeto() {
 		return objeto;
 	}
-		
+	
 	private Pais ultimoPaisDeRuta() {
 		if( this.rutaDeEscape == null ) return null;
 		
