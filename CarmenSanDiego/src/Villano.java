@@ -2,12 +2,10 @@ package CarmenSanDiego.src;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.mockito.ArgumentMatchers;
-
 public class Villano {
 	private String nombre;
 	private String sexo;
-	public ArrayList<String> hobbies;
+	private ArrayList<String> hobbies;
 	private ArrayList<String> senias;
 	private int ultimoIndexRandomSenias = -1;
 	private int ultimoIndexRandomHobbies = -1;
