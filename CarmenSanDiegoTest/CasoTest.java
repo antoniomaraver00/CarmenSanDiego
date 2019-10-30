@@ -20,7 +20,7 @@ import CarmenSanDiego.src.Villano;
 
 public class CasoTest {
 	@Test
-	public void obtenerPistasPaisDondeEscapo_PaisEsPaisFinalYPreguntaEnLugarQueNoEsElUltimo_EstaCerca() {
+	public void getPistasPaisDondeEscapo_PaisEsPaisFinalYPreguntaEnLugarQueNoEsElUltimo_EstaCerca() {
 		Villano responsable = Mockito.mock(Villano.class);
 		ArrayList<Pais> rutaDeEscape = new ArrayList<Pais>();
 		Pais paisDelCrimen = Mockito.mock(Pais.class);
@@ -47,7 +47,7 @@ public class CasoTest {
 	}
 	
 	@Test
-	public void obtenerPistasPaisDondeEscapo_PaisEsPaisFinalYPreguntaEnLugarDelVillanoYNoTieneSospechosoEnOrden_Pierde() {
+	public void getPistasPaisDondeEscapo_PaisEsPaisFinalYPreguntaEnLugarDelVillanoYNoTieneSospechosoEnOrden_Pierde() {
 		Villano responsable = Mockito.mock(Villano.class);
 		ArrayList<Pais> rutaDeEscape = new ArrayList<Pais>();
 		Pais paisDelCrimen = Mockito.mock(Pais.class);
@@ -76,7 +76,7 @@ public class CasoTest {
 	}
 	
 	@Test
-	public void obtenerPistasPaisDondeEscapo_PaisEsPaisFinalYPreguntaEnLugarDelVillanoYTieneOrdenIncorrecta_Pierde() {
+	public void getPistasPaisDondeEscapo_PaisEsPaisFinalYPreguntaEnLugarDelVillanoYTieneOrdenIncorrecta_Pierde() {
 		Villano responsable = Mockito.mock(Villano.class);
 		Villano sospechosoIncorrecto = Mockito.mock(Villano.class);
 		
@@ -108,7 +108,7 @@ public class CasoTest {
 	}
 	
 	@Test
-	public void obtenerPistasPaisDondeEscapo_PaisEsPaisFinalYPreguntaEnLugarDelVillanoYTieneOrdenCorrecta_Gana() {
+	public void getPistasPaisDondeEscapo_PaisEsPaisFinalYPreguntaEnLugarDelVillanoYTieneOrdenCorrecta_Gana() {
 		Villano responsable = Mockito.mock(Villano.class);
 		
 		ArrayList<Pais> rutaDeEscape = new ArrayList<Pais>();

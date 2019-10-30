@@ -39,8 +39,7 @@ public class VillanoTest {
 	}
 	
 	@Test
-public void agregaSenia_agregarSeniaYDevolverla() {
-		
+	public void agregaSenia_agregarSeniaYDevolverla() {
 		ArrayList<String> seniasCarmenSanDiego = new ArrayList<String>();
 		Villano CarmenSanDiego =new Villano("Carmen SanDiego","Mujer",new ArrayList<String>(),seniasCarmenSanDiego);
 		CarmenSanDiego.agregarSenia("Pelo Rojo");

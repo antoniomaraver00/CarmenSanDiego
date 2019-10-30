@@ -22,7 +22,7 @@ public class PaisTest {
 	}
 	
 	@Test 
-	public void obternerCaracteristicaRandom_agregoUnaSolaCaracteristicaYDevuelveEsa() {
+	public void getCaracteristicaRandom_agregoUnaSolaCaracteristicaYDevuelveEsa() {
 		ArrayList<String> caracteristicasArgentina = new ArrayList<String>();
 		caracteristicasArgentina.add("toman mate");
 		Pais argentina = new Pais("Argentina",caracteristicasArgentina,new ArrayList<Lugar>());
@@ -34,7 +34,7 @@ public class PaisTest {
 	}
 	
 	@Test
-	public void obternerCaracteristicaRandom_agregoDosCaracteristicaYDeberiaDevolverUnaDeEsasDos() {
+	public void getCaracteristicaRandom_agregoDosCaracteristicaYDeberiaDevolverUnaDeEsasDos() {
 		ArrayList<String> caracteristicasArgentina = new ArrayList<String>();
 		caracteristicasArgentina.add("toman mate");
 		caracteristicasArgentina.add("comen asado");
@@ -46,7 +46,7 @@ public class PaisTest {
 	}
 	
 	@Test 
-	public void obternerCaracteristicaRandom_pido2CaracteristicasYMeDevuelveDosDistintas() {
+	public void getCaracteristicaRandom_pido2CaracteristicasYMeDevuelveDosDistintas() {
 		ArrayList<String> caracteristicasArgentina = new ArrayList<String>();
 		caracteristicasArgentina.add("toman mate");
 		caracteristicasArgentina.add("comen asado");
