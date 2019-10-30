@@ -40,6 +40,12 @@ public class Detective {
 	}
 	
 	public void guardarPistas(List<String> pistas) {
-		this.pistasObtenidas.addAll(pistas);
+		if(pistas != null) {
+			this.pistasObtenidas.addAll(pistas);
+		}
+	}
+	
+	public ArrayList<String> obtenerPistasGuaradadas() {
+		return this.pistasObtenidas;
 	}
 }
