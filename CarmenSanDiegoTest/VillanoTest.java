@@ -17,45 +17,23 @@ import CarmenSanDiego.src.Villano;
 
 public class VillanoTest {
 	
-	@Test	
-	public void agregarHobbie_agregarHobbieYDevolverlo() {
+	@Test
+	public void agregaSenia_agregarSeniaYDeberiaAgregarse() {
+		Villano CarmenSanDiego =new Villano("Carmen SanDiego","Mujer",new ArrayList<String>(),new ArrayList<String>());
 		
-		ArrayList<String> hobbiesCarmenSanDiego = new ArrayList<String>();
-		Villano CarmenSanDiego =new Villano("Carmen SanDiego","Mujer",hobbiesCarmenSanDiego,new ArrayList<String>());
-		CarmenSanDiego.agregarHobbie("Baila Tango");
-		String hobbie=CarmenSanDiego.getHobbieRandom();
-		Assert.assertEquals("Baila Tango",hobbie);
+		CarmenSanDiego.agregarSenia("Pelo Rojo");
 		
+		ArrayList<String> senias = CarmenSanDiego.getSenias();
+		Assert.assertTrue(senias.contains("Pelo Rojo"));
 	}
 	
-	@Test
-	public void agregarHobbie_agregarMasDe1HobbieYDevolverUno() {
-		ArrayList<String> hobbiesCarmenSanDiego = new ArrayList<String>();
-		Villano CarmenSanDiego =new Villano("Carmen SanDiego","Mujer",hobbiesCarmenSanDiego,new ArrayList<String>());
-		CarmenSanDiego.agregarHobbie("Juega Tennis");
-		CarmenSanDiego.agregarHobbie("Baila Tango");
-		String hobbie=CarmenSanDiego.getHobbieRandom();
-		Assert.assertEquals(true,CarmenSanDiego.getHobbies().contains(hobbie));
+	@Test 
+	public void agregarHobbie_agregoUnHobbieYDeveriaAgregarse() {
+		Villano CarmenSanDiego =new Villano("Carmen SanDiego","Mujer",new ArrayList<String>(),new ArrayList<String>());
+
+		CarmenSanDiego.agregarHobbie("le gusta leer");
+		
+		ArrayList<String> hobbies = CarmenSanDiego.getHobbies();
+		Assert.assertTrue(hobbies.contains("le gusta leer"));
 	}
-	
-	@Test
-	public void agregaSenia_agregarSeniaYDevolverla() {
-		ArrayList<String> seniasCarmenSanDiego = new ArrayList<String>();
-		Villano CarmenSanDiego =new Villano("Carmen SanDiego","Mujer",new ArrayList<String>(),seniasCarmenSanDiego);
-		CarmenSanDiego.agregarSenia("Pelo Rojo");
-		String senia=CarmenSanDiego.getSeniaRandom();
-		Assert.assertEquals("Pelo Rojo",senia);
-		}
-	
-	@Test
-	public void agregarSenia_agregarMasDe1SeniaYDevolverUna() {
-		ArrayList<String> seniasCarmenSanDiego = new ArrayList<String>();
-		Villano CarmenSanDiego =new Villano("Carmen SanDiego","Mujer",new ArrayList<String>(),seniasCarmenSanDiego);
-		CarmenSanDiego.agregarSenia("Pelo Rojo");
-		CarmenSanDiego.agregarSenia("Maneja Convertible");
-		String senia=CarmenSanDiego.getSeniaRandom();
-		Assert.assertEquals(true,CarmenSanDiego.getSenias().contains(senia));
-	}
-	
-	
 }
