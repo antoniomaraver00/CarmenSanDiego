@@ -18,6 +18,10 @@ public class Pais {
 		this.conexiones = new ArrayList<Pais>();
 	}
 	
+	public void agregarLugar(Lugar lugar) {
+		this.lugares.add(lugar);
+	}
+	
 	public void asignarConexion(Pais pais) {
 		conexiones.add(pais);
 	}
