@@ -3,6 +3,7 @@ package CarmenSanDiego.src;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Caso {
 	private Villano responsable;
@@ -108,22 +109,38 @@ public class Caso {
 	}
 	
 	private Boolean sospechosoPoseeAlgunaSenia( ArrayList<String> seniasFiltro, Villano sospechoso ) {
+		if( seniasFiltro == null || seniasFiltro.size() == 0 ) {
+			return false;
+		}
+		
 		ArrayList<String> sospechosoSenias = sospechoso.getSenias();
+		
+		if( sospechosoSenias == null || sospechosoSenias.size() == 0 ) {
+			return false;
+		}
 		
 		return sospechosoSenias.stream().anyMatch( senia -> seniasFiltro.contains(senia) );
 	}
 	
 	private Boolean sospechosoPoseeAlgunHobby( ArrayList<String> hobbiesFiltro, Villano sospechoso ) {
+		if( hobbiesFiltro == null || hobbiesFiltro.size() == 0 ) {
+			return false;
+		}
+		
 		ArrayList<String> sospechosoHobbies = sospechoso.getHobbies();
+		
+		if( sospechosoHobbies == null || sospechosoHobbies.size() == 0 ) {
+			return false;
+		}
 		
 		return sospechosoHobbies.stream().anyMatch( hobby -> hobbiesFiltro.contains(hobby) );
 	}
 	
 	private Boolean filtroSospechosoPorHobbiesYSenias( ArrayList<String> hobbiesFiltro, ArrayList<String> seniasFiltro, Villano sospechoso ) {
-		return sospechosoPoseeAlgunaSenia(seniasFiltro, sospechoso) || sospechosoPoseeAlgunHobby(hobbiesFiltro, sospechoso);
+		return (sospechosoPoseeAlgunaSenia(seniasFiltro, sospechoso) || sospechosoPoseeAlgunHobby(hobbiesFiltro, sospechoso));
 	}
 	
-	public ArrayList<Villano> filtrarVillanos(ArrayList<String> senias, ArrayList<String> hobbies) {
+	public ArrayList<Villano> filtrarSospechosos(ArrayList<String> senias, ArrayList<String> hobbies) {	
 		return sospechosos.stream().filter( sospechoso -> filtroSospechosoPorHobbiesYSenias(hobbies, senias, sospechoso)).collect(Collectors.toCollection(ArrayList::new));
 	}
 }
