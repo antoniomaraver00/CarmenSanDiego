@@ -39,7 +39,7 @@ public class CasoTest {
 		
 		Detective detective = new Detective(argentina);
 		
-		Caso caso = new Caso(responsable, rutaDeEscape, "", "", paisDelCrimen );
+		Caso caso = new Caso(responsable, rutaDeEscape, "", "", paisDelCrimen, null);
 		
 		ArrayList<String> pistas = caso.obtenerPistasPaisDondeEscapo(clubMol, detective);
 		
@@ -65,7 +65,7 @@ public class CasoTest {
 		rutaDeEscape.add(argentina);
 		
 		Detective detective = new Detective(argentina);
-		Caso caso = new Caso(responsable, rutaDeEscape, "", "", paisDelCrimen );
+		Caso caso = new Caso(responsable, rutaDeEscape, "", "", paisDelCrimen, null);
 		
 		Lugar ultimoLugarDeEscape = caso.ultimoLugarDeEscape();
 		
@@ -97,7 +97,7 @@ public class CasoTest {
 		
 		Detective detective = new Detective(argentina);
 		detective.generarOrden(sospechosoIncorrecto);
-		Caso caso = new Caso(responsable, rutaDeEscape, "", "", paisDelCrimen );
+		Caso caso = new Caso(responsable, rutaDeEscape, "", "", paisDelCrimen, null);
 		
 		Lugar ultimoLugarDeEscape = caso.ultimoLugarDeEscape();
 		
@@ -128,7 +128,7 @@ public class CasoTest {
 		
 		Detective detective = new Detective(argentina);
 		detective.generarOrden(responsable);
-		Caso caso = new Caso(responsable, rutaDeEscape, "", "", paisDelCrimen );
+		Caso caso = new Caso(responsable, rutaDeEscape, "", "", paisDelCrimen, null);
 		
 		Lugar ultimoLugarDeEscape = caso.ultimoLugarDeEscape();
 		
