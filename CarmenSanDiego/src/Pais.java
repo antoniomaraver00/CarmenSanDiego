@@ -43,6 +43,8 @@ public class Pais {
 		
 		while( (indexRandom = (int)(Math.random() * caracteristicas.size())) == ultimoIndexRandomCaracteristicas );
 		
+		ultimoIndexRandomCaracteristicas = indexRandom;
+		
 		return caracteristicas.get(indexRandom);
 	}
 	

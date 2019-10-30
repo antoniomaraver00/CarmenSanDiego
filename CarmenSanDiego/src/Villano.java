@@ -50,6 +50,8 @@ public class Villano {
 		
 		while( (indexRandom = (int)(Math.random() * senias.size())) == ultimoIndexRandomSenias );
 		
+		ultimoIndexRandomSenias = indexRandom;
+		
 		return senias.get(indexRandom);
 	}
 	
@@ -57,6 +59,8 @@ public class Villano {
 		int indexRandom = -1;
 		
 		while( (indexRandom = (int)(Math.random() * hobbies.size())) == ultimoIndexRandomHobbies );
+		
+		ultimoIndexRandomHobbies = indexRandom;
 		
 		return hobbies.get(indexRandom);
 	}
