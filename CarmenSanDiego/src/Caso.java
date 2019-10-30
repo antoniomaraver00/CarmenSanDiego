@@ -21,8 +21,12 @@ public class Caso {
 		this.objeto = objeto;
 		this.paisDelCrimen = paisDelCrimen;
 		
-		this.ultimoLugarEscape = getUltimoPaisDeRuta().getLugarRandom();
+		this.ultimoLugarEscape = getLugarRandomDeUltimoPaisDeRuta();
 		this.sospechosos = sospechosos;
+	}
+
+	public Lugar getLugarRandomDeUltimoPaisDeRuta() {
+		return getUltimoPaisDeRuta().getLugarRandom();
 	}
 
 	public ArrayList<Villano> getSospechosos() {
@@ -63,10 +67,14 @@ public class Caso {
 	
 	private Pais getPaisSiguienteDeRuta(Pais paisActual) {
 		if(paisPerteneceRutaDeEscape(paisActual) && !esPaisFinal(paisActual)) {
-			return rutaDeEscape.get(rutaDeEscape.indexOf(paisActual)+1);
+			return rutaDeEscape.get(getIndexDeSiguientePaisEnRuta(paisActual));
 		}
 		
 		return null;
+	}
+
+	public int getIndexDeSiguientePaisEnRuta(Pais paisActual) {
+		return rutaDeEscape.indexOf(paisActual)+1;
 	}
 	
 	public Lugar getUltimoLugarDeEscape() {
@@ -82,13 +90,7 @@ public class Caso {
 				Villano sospechoso = detective.getSospechosoEnOrden();
 				
 				if( !esElResponsable(sospechoso) ) {
-					String mensaje;
-					
-					if( sospechoso == null) {
-						mensaje = "El villano esta en el lugar, pero no tenia orden de arresto!";
-					} else {
-						mensaje = "El sospechoso "+sospechoso.getNombre()+" no es el culpable!";
-					}
+					String mensaje = formatearMensajeDeGameOver(sospechoso);
 					throw new GameOverException(mensaje);
 				} else {
 					throw new GameWonException("Atrapo al malechor!");
@@ -99,13 +101,28 @@ public class Caso {
 		} else if(!paisPerteneceRutaDeEscape(paisActual)) {
 			pistas.add("No se nada acerca de aquella persona.");
 		} else {
-			Pais siguientePais = getPaisSiguienteDeRuta(paisActual);
-			
-			List<String> pistaModelada = lugar.modelarPistas(responsable, siguientePais);
-			pistas.addAll(pistaModelada);
+			modelarPistasSegunResponsableYPaisAlQueEscapo(lugar, pistas, paisActual);
 		}
 		
 		return pistas;
+	}
+
+	private void modelarPistasSegunResponsableYPaisAlQueEscapo(Lugar lugar, ArrayList<String> pistas, Pais paisActual) {
+		Pais siguientePais = getPaisSiguienteDeRuta(paisActual);
+		
+		List<String> pistaModelada = lugar.modelarPistas(responsable, siguientePais);
+		pistas.addAll(pistaModelada);
+	}
+
+	private String formatearMensajeDeGameOver(Villano sospechoso) {
+		String mensaje;
+		
+		if( sospechoso == null) {
+			mensaje = "El villano esta en el lugar, pero no tenia orden de arresto!";
+		} else {
+			mensaje = "El sospechoso "+sospechoso.getNombre()+" no es el culpable!";
+		}
+		return mensaje;
 	}
 	
 	private Boolean sospechosoPoseeAlgunaSenia( ArrayList<String> seniasFiltro, Villano sospechoso ) {
@@ -141,6 +158,8 @@ public class Caso {
 	}
 	
 	public ArrayList<Villano> filtrarSospechosos(ArrayList<String> senias, ArrayList<String> hobbies) {	
-		return sospechosos.stream().filter( sospechoso -> filtroSospechosoPorHobbiesYSenias(hobbies, senias, sospechoso)).collect(Collectors.toCollection(ArrayList::new));
+		Stream<Villano> streamSospechososFiltrado = sospechosos.stream().filter( sospechoso -> filtroSospechosoPorHobbiesYSenias(hobbies, senias, sospechoso));
+		
+		return streamSospechososFiltrado.collect(Collectors.toCollection(ArrayList::new));
 	}
 }
