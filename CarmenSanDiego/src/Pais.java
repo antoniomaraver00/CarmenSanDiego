@@ -14,7 +14,6 @@ public class Pais {
 		this.caracteristicas=caracteristicas;
 		this.lugares=lugares;
 		this.conexiones = new ArrayList<Pais>();
-		
 	}
 	
 	public void asignarConexion(Pais pais) {
