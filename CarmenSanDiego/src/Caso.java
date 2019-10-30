@@ -32,7 +32,7 @@ public class Caso {
 	private Pais ultimoPaisDeRuta() {
 		if( this.rutaDeEscape == null ) return null;
 		
-		return this.rutaDeEscape.get( this.rutaDeEscape.size() );
+		return this.rutaDeEscape.get( this.rutaDeEscape.size()-1 );
 	}
 	
 	public Boolean paisPerteneceRutaDeEscape(Pais pais) {
@@ -57,8 +57,8 @@ public class Caso {
 		return null;
 	}
 	
-	public List<String> obtenerPistasPaisDondeEscapo(Lugar lugar, Detective detective) {
-		List<String> pistas = new ArrayList<String>();
+	public ArrayList<String> obtenerPistasPaisDondeEscapo(Lugar lugar, Detective detective) {
+		ArrayList<String> pistas = new ArrayList<String>();
 		Pais paisActual = detective.obtenerPaisActual();
 		
 		if(esPaisFinal(paisActual)) {
