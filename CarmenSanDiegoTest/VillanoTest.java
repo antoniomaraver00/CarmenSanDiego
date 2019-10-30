@@ -36,4 +36,58 @@ public class VillanoTest {
 		ArrayList<String> hobbies = CarmenSanDiego.getHobbies();
 		Assert.assertTrue(hobbies.contains("le gusta leer"));
 	}
+	
+	@Test
+	public void getSeniaRandom_DevuelveUnaSeniaPertenecienteAlVillano() {
+		ArrayList<String> senias = new ArrayList<String>();
+		senias.add("Pelo rojo");
+		senias.add("Pie corto");
+		
+		Villano carmen = new Villano("Carmen", "Mujer", new ArrayList<String>(), senias);
+		
+		String seniaRandom = carmen.getSeniaRandom();
+		
+		Assert.assertTrue( senias.stream().anyMatch( senia -> senia.equals(seniaRandom) ));
+	}
+	
+	@Test
+	public void getSeniaRandom_DevuelveUnaSeniaDiferenteSiempre() {
+		ArrayList<String> senias = new ArrayList<String>();
+		senias.add("Pelo rojo");
+		senias.add("Pie corto");
+		
+		Villano carmen = new Villano("Carmen", "Mujer", new ArrayList<String>(), senias);
+		
+		String seniaRandom1 = carmen.getSeniaRandom();
+		String seniaRandom2 = carmen.getSeniaRandom();
+				
+		Assert.assertNotEquals( seniaRandom1, seniaRandom2 );
+	}
+	
+	@Test
+	public void getHobbyRandom_DevuelveUnHobbyertenecienteAlVillano() {
+		ArrayList<String> hobbies = new ArrayList<String>();
+		hobbies.add("Pelo rojo");
+		hobbies.add("Pie corto");
+		
+		Villano carmen = new Villano("Marito", "Hombre", hobbies, new ArrayList<String>());
+		
+		String hobbyRandom = carmen.getHobbieRandom();
+		
+		Assert.assertTrue( hobbies.stream().anyMatch( hobby -> hobby.equals(hobbyRandom) ));
+	}
+	
+	@Test
+	public void getHobbyRandom_DevuelveUnHobbyDiferenteSiempre() {
+		ArrayList<String> hobbies = new ArrayList<String>();
+		hobbies.add("Jugar a la pelota");
+		hobbies.add("Levantar pesas");
+		
+		Villano carmen = new Villano("Marito", "Hombre", hobbies, new ArrayList<String>());
+		
+		String hobbyRandom1 = carmen.getHobbieRandom();
+		String hobbyRandom2 = carmen.getHobbieRandom();
+				
+		Assert.assertNotEquals( hobbyRandom1, hobbyRandom2 );
+	}
 }
