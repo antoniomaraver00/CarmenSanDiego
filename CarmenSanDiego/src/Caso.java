@@ -2,6 +2,7 @@ package CarmenSanDiego.src;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Caso {
 	private Villano responsable;
@@ -104,5 +105,25 @@ public class Caso {
 		}
 		
 		return pistas;
+	}
+	
+	private Boolean sospechosoPoseeAlgunaSenia( ArrayList<String> seniasFiltro, Villano sospechoso ) {
+		ArrayList<String> sospechosoSenias = sospechoso.getSenias();
+		
+		return sospechosoSenias.stream().anyMatch( senia -> seniasFiltro.contains(senia) );
+	}
+	
+	private Boolean sospechosoPoseeAlgunHobby( ArrayList<String> hobbiesFiltro, Villano sospechoso ) {
+		ArrayList<String> sospechosoHobbies = sospechoso.getHobbies();
+		
+		return sospechosoHobbies.stream().anyMatch( hobby -> hobbiesFiltro.contains(hobby) );
+	}
+	
+	private Boolean filtroSospechosoPorHobbiesYSenias( ArrayList<String> hobbiesFiltro, ArrayList<String> seniasFiltro, Villano sospechoso ) {
+		return sospechosoPoseeAlgunaSenia(seniasFiltro, sospechoso) || sospechosoPoseeAlgunHobby(hobbiesFiltro, sospechoso);
+	}
+	
+	public ArrayList<Villano> filtrarVillanos(ArrayList<String> senias, ArrayList<String> hobbies) {
+		return sospechosos.stream().filter( sospechoso -> filtroSospechosoPorHobbiesYSenias(hobbies, senias, sospechoso)).collect(Collectors.toCollection(ArrayList::new));
 	}
 }
