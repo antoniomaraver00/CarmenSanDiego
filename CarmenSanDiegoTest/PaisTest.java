@@ -56,6 +56,6 @@ public class PaisTest {
 		String caracteristica1 = argentina.getCaracteristicaRandom();
 		String caracteristica2 = argentina.getCaracteristicaRandom();
 		
-		Assert.assertEquals(false, caracteristica1.contentEquals(caracteristica2));
+		Assert.assertNotEquals(caracteristica1,caracteristica2);
 	}
 }
