@@ -9,7 +9,7 @@ public class Caso {
 	private String reporte;
 	private String objeto;
 	private Pais paisDelCrimen;
-	private int ultimoLugarEscape;
+	private Lugar ultimoLugarEscape;
 	
 	public Caso(Villano responsable, List<Pais> rutaDeEscape, String reporte, String objeto, Pais paisDelCrimen) {
 		this.responsable = responsable;
@@ -18,7 +18,7 @@ public class Caso {
 		this.objeto = objeto;
 		this.paisDelCrimen = paisDelCrimen;
 		
-		ultimoLugarEscape = (int)(Math.random()*(rutaDeEscape.size()-1));
+		this.ultimoLugarEscape = ultimoPaisDeRuta().obtenerLugarRandom();
 	}
 
 	public String getReporte() {
@@ -29,6 +29,12 @@ public class Caso {
 		return objeto;
 	}
 
+	private Pais ultimoPaisDeRuta() {
+		if( this.rutaDeEscape == null ) return null;
+		
+		return this.rutaDeEscape.get( this.rutaDeEscape.size() );
+	}
+	
 	public Boolean paisPerteneceRutaDeEscape(Pais pais) {
 		return rutaDeEscape.contains(pais);
 	}
@@ -45,11 +51,12 @@ public class Caso {
 		return null;
 	}
 	
-	public List<String> obtenerPistasPaisDondeEscapo(Pais paisActual, Lugar lugar, Detective detective) {
+	public List<String> obtenerPistasPaisDondeEscapo(Lugar lugar, Detective detective) {
 		List<String> pistas = new ArrayList<String>();
+		Pais paisActual = detective.obtenerPaisActual();
 		
 		if(esPaisFinal(paisActual)) {
-			if( rutaDeEscape.indexOf(lugar) == ultimoLugarEscape ) {
+			if( lugar == ultimoLugarEscape ) {
 				Villano sospechoso = detective.obtenerSospechosoEnOrden();
 				
 				if(sospechoso == null || sospechoso != responsable) {
