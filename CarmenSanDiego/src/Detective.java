@@ -1,11 +1,12 @@
 package CarmenSanDiego.src;
 
+
 public class Detective {
 	private Villano sospechosoEnOrden = null;
 	private Pais paisActual;
 	
 	public Detective() {
-		this.paisActual = null;
+		this(null);
 	}
 	
 	public Detective(Pais paisActual) {
