@@ -13,8 +13,9 @@ public class Mapamundi {
 		this.paises = paises;
 	}
 	
-	public Boolean hayConexionAerea(Pais paisA,Pais paisB) {
-		return (paisA.hayConexion(paisB) && paisB.hayConexion(paisA));
+	public void asignarConexion(Pais paisA,Pais paisB) {
+		paisA.asignarConexion(paisB); 
+		paisB.asignarConexion(paisA);
 	}
 	
 }
