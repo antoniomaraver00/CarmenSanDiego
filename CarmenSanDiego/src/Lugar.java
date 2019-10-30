@@ -10,16 +10,16 @@ public abstract class Lugar {
 		this.pais = pais;
 	}
 	
-	public String obtenerNombre() {
+	public String getNombre() {
 		return nombre;
 	}
 	
-	public Pais obtenerPais() {
+	public Pais getPais() {
 		return pais;
 	}
 	
-	public List<String> obtenerPistas(Caso caso, Detective detective) {
-		return caso.obtenerPistasPaisDondeEscapo(this, detective);
+	public List<String> getPistas(Caso caso, Detective detective) {
+		return caso.getPistasPaisDondeEscapo(this, detective);
 	}
 	
 	public abstract List<String> modelarPistas(Villano villano, Pais paisSiguiente);

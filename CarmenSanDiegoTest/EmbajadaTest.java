@@ -15,7 +15,7 @@ public class EmbajadaTest {
 	Pais paisActual = Mockito.mock(Pais.class);
 	Pais paisSiguiente = Mockito.mock(Pais.class);
 	Villano villano = Mockito.mock(Villano.class);
-	Mockito.when(paisSiguiente.obtenerCaracteristicaRandom()).thenReturn("toman mate");
+	Mockito.when(paisSiguiente.getCaracteristicaRandom()).thenReturn("toman mate");
 	Embajada embajada = new Embajada("embajada", paisActual);
 	ArrayList<String> pistasEsperadas = new ArrayList<String>();
 	pistasEsperadas.add("toman mate");

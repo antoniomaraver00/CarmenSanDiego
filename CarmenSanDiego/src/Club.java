@@ -13,11 +13,11 @@ public class Club extends Lugar {
 	public List<String> modelarPistas(Villano villano, Pais paisSiguiente) {
 		List<String> pistas = new ArrayList<String>();
 		
-		pistas.add(villano.obtenerSeniaRandom());
-		pistas.add(villano.obtenerSeniaRandom());
+		pistas.add(villano.getSeniaRandom());
+		pistas.add(villano.getSeniaRandom());
 		
 		if( Math.random() >= 0.3 ) {
-			pistas.add(villano.obtenerHobbieRandom());
+			pistas.add(villano.getHobbieRandom());
 		}
 		
 		return pistas;

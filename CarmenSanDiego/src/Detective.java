@@ -25,12 +25,12 @@ public class Detective {
 			paisActual = paisDestino;
 		}
 	}
-	public Pais obtenerPaisActual()
+	public Pais getPaisActual()
 	{
 		return paisActual;
 	}
 	
-	public Villano obtenerSospechosoEnOrden()
+	public Villano getSospechosoEnOrden()
 	{
 		return sospechosoEnOrden;
 	}

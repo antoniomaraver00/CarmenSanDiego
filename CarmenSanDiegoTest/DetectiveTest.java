@@ -18,7 +18,7 @@ public class DetectiveTest {
 		Mockito.when(argentina.getNombre()).thenReturn("Argentina");
 		
 		detective.viajar(argentina);
-		Assert.assertEquals(argentina, detective.obtenerPaisActual());
+		Assert.assertEquals(argentina, detective.getPaisActual());
 	}
 	
 	@Test
@@ -31,6 +31,6 @@ public class DetectiveTest {
 		Pais Inglaterra = new Pais ("Inglaterra", null, null);
 		Argentina.asignarConexion(Chile);
 		SherlockHolmes.viajar(Inglaterra);
-		Assert.assertEquals(Argentina, SherlockHolmes.obtenerPaisActual());
+		Assert.assertEquals(Argentina, SherlockHolmes.getPaisActual());
 	}
 }

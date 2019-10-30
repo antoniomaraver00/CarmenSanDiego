@@ -13,11 +13,11 @@ public class Biblioteca extends Lugar {
 	public List<String> modelarPistas(Villano villano, Pais paisSiguiente) {
 		List<String> pistas = new ArrayList<String>();
 		
-		pistas.add(paisSiguiente.obtenerCaracteristicaRandom());
-		pistas.add(villano.obtenerSeniaRandom());
+		pistas.add(paisSiguiente.getCaracteristicaRandom());
+		pistas.add(villano.getSeniaRandom());
 		
 		if( Math.random() >= 0.5 ) {
-			pistas.add(villano.obtenerHobbieRandom());
+			pistas.add(villano.getHobbieRandom());
 		}
 		
 		return pistas;

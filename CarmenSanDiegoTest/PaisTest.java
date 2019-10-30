@@ -27,7 +27,7 @@ public class PaisTest {
 		caracteristicasArgentina.add("toman mate");
 		Pais argentina = new Pais("Argentina",caracteristicasArgentina,new ArrayList<Lugar>());
 		
-		String caracteristica = argentina.obtenerCaracteristicaRandom();
+		String caracteristica = argentina.getCaracteristicaRandom();
 		
 		Assert.assertEquals("toman mate",caracteristica);
 		
@@ -40,7 +40,7 @@ public class PaisTest {
 		caracteristicasArgentina.add("comen asado");
 		Pais argentina = new Pais("Argentina",caracteristicasArgentina,new ArrayList<Lugar>());
 		
-		String caracteristica= argentina.obtenerCaracteristicaRandom();
+		String caracteristica= argentina.getCaracteristicaRandom();
 		
 		Assert.assertEquals(true,caracteristicasArgentina.contains(caracteristica));
 	}
@@ -53,8 +53,8 @@ public class PaisTest {
 		caracteristicasArgentina.add("su capital es Bs.As");
 		Pais argentina = new Pais("Argentina",caracteristicasArgentina,new ArrayList<Lugar>());
 		
-		String caracteristica1 = argentina.obtenerCaracteristicaRandom();
-		String caracteristica2 = argentina.obtenerCaracteristicaRandom();
+		String caracteristica1 = argentina.getCaracteristicaRandom();
+		String caracteristica2 = argentina.getCaracteristicaRandom();
 		
 		Assert.assertEquals(false, caracteristica1.contentEquals(caracteristica2));
 	}

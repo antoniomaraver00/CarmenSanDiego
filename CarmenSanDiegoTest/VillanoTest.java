@@ -23,7 +23,7 @@ public class VillanoTest {
 		ArrayList<String> hobbiesCarmenSanDiego = new ArrayList<String>();
 		Villano CarmenSanDiego =new Villano("Carmen SanDiego","Mujer",hobbiesCarmenSanDiego,new ArrayList<String>());
 		CarmenSanDiego.agregarHobbie("Baila Tango");
-		String hobbie=CarmenSanDiego.obtenerHobbieRandom();
+		String hobbie=CarmenSanDiego.getHobbieRandom();
 		Assert.assertEquals("Baila Tango",hobbie);
 		
 	}
@@ -34,8 +34,8 @@ public class VillanoTest {
 		Villano CarmenSanDiego =new Villano("Carmen SanDiego","Mujer",hobbiesCarmenSanDiego,new ArrayList<String>());
 		CarmenSanDiego.agregarHobbie("Juega Tennis");
 		CarmenSanDiego.agregarHobbie("Baila Tango");
-		String hobbie=CarmenSanDiego.obtenerHobbieRandom();
-		Assert.assertEquals(true,CarmenSanDiego.obtenerHobbies().contains(hobbie));
+		String hobbie=CarmenSanDiego.getHobbieRandom();
+		Assert.assertEquals(true,CarmenSanDiego.getHobbies().contains(hobbie));
 	}
 	
 	@Test
@@ -44,7 +44,7 @@ public void agregaSenia_agregarSeniaYDevolverla() {
 		ArrayList<String> seniasCarmenSanDiego = new ArrayList<String>();
 		Villano CarmenSanDiego =new Villano("Carmen SanDiego","Mujer",new ArrayList<String>(),seniasCarmenSanDiego);
 		CarmenSanDiego.agregarSenia("Pelo Rojo");
-		String senia=CarmenSanDiego.obtenerSeniaRandom();
+		String senia=CarmenSanDiego.getSeniaRandom();
 		Assert.assertEquals("Pelo Rojo",senia);
 		}
 	
@@ -54,8 +54,8 @@ public void agregaSenia_agregarSeniaYDevolverla() {
 		Villano CarmenSanDiego =new Villano("Carmen SanDiego","Mujer",new ArrayList<String>(),seniasCarmenSanDiego);
 		CarmenSanDiego.agregarSenia("Pelo Rojo");
 		CarmenSanDiego.agregarSenia("Maneja Convertible");
-		String senia=CarmenSanDiego.obtenerSeniaRandom();
-		Assert.assertEquals(true,CarmenSanDiego.obtenerSenias().contains(senia));
+		String senia=CarmenSanDiego.getSeniaRandom();
+		Assert.assertEquals(true,CarmenSanDiego.getSenias().contains(senia));
 	}
 	
 	

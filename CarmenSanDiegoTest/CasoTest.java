@@ -41,7 +41,7 @@ public class CasoTest {
 		
 		Caso caso = new Caso(responsable, rutaDeEscape, "", "", paisDelCrimen, null);
 		
-		ArrayList<String> pistas = caso.obtenerPistasPaisDondeEscapo(clubMol, detective);
+		ArrayList<String> pistas = caso.getPistasPaisDondeEscapo(clubMol, detective);
 		
 		Assert.assertEquals("Estas cerca...", pistas.get(0));
 	}
@@ -67,11 +67,11 @@ public class CasoTest {
 		Detective detective = new Detective(argentina);
 		Caso caso = new Caso(responsable, rutaDeEscape, "", "", paisDelCrimen, null);
 		
-		Lugar ultimoLugarDeEscape = caso.ultimoLugarDeEscape();
+		Lugar ultimoLugarDeEscape = caso.getUltimoLugarDeEscape();
 		
 		assertThrows(GameOverException.class, () -> {
 			ArrayList<String> pistas = new ArrayList<String>();
-			pistas = caso.obtenerPistasPaisDondeEscapo(ultimoLugarDeEscape, detective);
+			pistas = caso.getPistasPaisDondeEscapo(ultimoLugarDeEscape, detective);
 		});
 	}
 	
@@ -99,11 +99,11 @@ public class CasoTest {
 		detective.generarOrden(sospechosoIncorrecto);
 		Caso caso = new Caso(responsable, rutaDeEscape, "", "", paisDelCrimen, null);
 		
-		Lugar ultimoLugarDeEscape = caso.ultimoLugarDeEscape();
+		Lugar ultimoLugarDeEscape = caso.getUltimoLugarDeEscape();
 		
 		assertThrows(GameOverException.class, () -> {
 			ArrayList<String> pistas = new ArrayList<String>();
-			pistas = caso.obtenerPistasPaisDondeEscapo(ultimoLugarDeEscape, detective);
+			pistas = caso.getPistasPaisDondeEscapo(ultimoLugarDeEscape, detective);
 		});
 	}
 	
@@ -130,11 +130,11 @@ public class CasoTest {
 		detective.generarOrden(responsable);
 		Caso caso = new Caso(responsable, rutaDeEscape, "", "", paisDelCrimen, null);
 		
-		Lugar ultimoLugarDeEscape = caso.ultimoLugarDeEscape();
+		Lugar ultimoLugarDeEscape = caso.getUltimoLugarDeEscape();
 		
 		assertThrows(GameWonException.class, () -> {
 			ArrayList<String> pistas = new ArrayList<String>();
-			pistas = caso.obtenerPistasPaisDondeEscapo(ultimoLugarDeEscape, detective);
+			pistas = caso.getPistasPaisDondeEscapo(ultimoLugarDeEscape, detective);
 		});
 	}
 }

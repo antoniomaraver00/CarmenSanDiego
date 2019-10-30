@@ -14,9 +14,9 @@ public class BancoTest {
 	@Test
 	public void modelarPistas_pidoUnaPistaYDeberiaDevolverUnaCaracteristicaDelPaisYUnaSeniaDelVillano(){
 		Pais paisSiguiente = Mockito.mock(Pais.class);
-		Mockito.when(paisSiguiente.obtenerCaracteristicaRandom()).thenReturn("tiene cristo");
+		Mockito.when(paisSiguiente.getCaracteristicaRandom()).thenReturn("tiene cristo");
 		Villano villano = Mockito.mock(Villano.class);
-		Mockito.when(villano.obtenerSeniaRandom()).thenReturn("tiene una cicatriz en la cara");
+		Mockito.when(villano.getSeniaRandom()).thenReturn("tiene una cicatriz en la cara");
 		Pais argentina = Mockito.mock(Pais.class);
 		Banco bancoProvincia = new Banco("banco provincia",argentina);
 		ArrayList<String> pistasEsperadas = new ArrayList<String>();

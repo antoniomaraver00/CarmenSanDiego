@@ -38,7 +38,7 @@ public class Pais {
 		return caracteristicas;
 	}
 	
-	public String obtenerCaracteristicaRandom() {
+	public String getCaracteristicaRandom() {
 		int indexRandom = -1;
 		
 		while( (indexRandom = (int)(Math.random() * caracteristicas.size())) == ultimoIndexRandomCaracteristicas );
@@ -54,7 +54,7 @@ public class Pais {
 		return conexiones;
 	}
 	
-	public Lugar obtenerLugarRandom() {
+	public Lugar getLugarRandom() {
 		if( lugares == null ) return null;
 		
 		int idLugarRandom = (int)(Math.random()*(this.lugares.size()-1));

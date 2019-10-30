@@ -12,8 +12,8 @@ public class Banco extends Lugar {
 	public List<String> modelarPistas(Villano villano, Pais paisSiguiente) {
 		List<String> pistas = new ArrayList<String>();
 		
-		pistas.add(paisSiguiente.obtenerCaracteristicaRandom());
-		pistas.add(villano.obtenerSeniaRandom());
+		pistas.add(paisSiguiente.getCaracteristicaRandom());
+		pistas.add(villano.getSeniaRandom());
 		
 		return pistas;
 	}

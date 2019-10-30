@@ -26,7 +26,7 @@ public class Villano {
 		this.senias.addAll(senias);
 	}
 	
-	public String obtenerNombre() {
+	public String getNombre() {
 		return nombre;
 		}
 	
@@ -41,11 +41,11 @@ public class Villano {
 			hobbies.add(hobbie);
 			}
 		}
-	public ArrayList<String> obtenerHobbies(){
+	public ArrayList<String> getHobbies(){
 		return hobbies;
 	}
 	
-	public String obtenerSeniaRandom() {
+	public String getSeniaRandom() {
 		int indexRandom = -1;
 		
 		while( (indexRandom = (int)(Math.random() * senias.size())) == ultimoIndexRandomSenias );
@@ -53,7 +53,7 @@ public class Villano {
 		return senias.get(indexRandom);
 	}
 	
-	public String obtenerHobbieRandom() {
+	public String getHobbieRandom() {
 		int indexRandom = -1;
 		
 		while( (indexRandom = (int)(Math.random() * hobbies.size())) == ultimoIndexRandomHobbies );
@@ -61,11 +61,11 @@ public class Villano {
 		return hobbies.get(indexRandom);
 	}
 	
-	public String obtenerSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public ArrayList<String> obtenerSenias() {
+	public ArrayList<String> getSenias() {
 		return senias;
 	}
 
