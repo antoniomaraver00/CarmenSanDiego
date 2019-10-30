@@ -5,24 +5,23 @@ import java.util.List;
 public class Villano {
 	private String nombre;
 	private String sexo;
-	private ArrayList<String> hobbies;
+	public ArrayList<String> hobbies;
 	private ArrayList<String> senias;
 	private int ultimoIndexRandomSenias = -1;
 	private int ultimoIndexRandomHobbies = -1;
 	
-	Villano(String nombre, String sexo) {
+	public Villano(String nombre, String sexo) {
 		this.nombre = nombre;
 		this.sexo = sexo;
 		this.hobbies = new ArrayList<String>();
 		this.senias = new ArrayList<String>();
 	}
 	
-	Villano(String nombre, String sexo, List<String> hobbies, List<String> senias) {
+	public Villano(String nombre, String sexo, List<String> hobbies, List<String> senias) {
 		this.nombre = nombre;
 		this.sexo = sexo;
 		this.hobbies = new ArrayList<String>();
 		this.senias = new ArrayList<String>();
-		
 		this.hobbies.addAll(hobbies);
 		this.senias.addAll(senias);
 	}
@@ -41,7 +40,9 @@ public class Villano {
 		if (!hobbies.contains(hobbie)) {
 			hobbies.add(hobbie);
 			}
-		
+		}
+	public ArrayList<String> obtenerHobbies(){
+		return hobbies;
 	}
 	
 	public String obtenerSeniaRandom() {
