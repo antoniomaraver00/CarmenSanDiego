@@ -11,7 +11,7 @@ import org.mockito.Mockito;
 
 public class BibliotecaTest {
 	@Test
-	public void test() {
+	public void modelarPistas_() {
 		Pais paisActual = Mockito.mock(Pais.class);
 		Pais paisSiguiente = Mockito.mock(Pais.class);
 		Villano villano = Mockito.mock(Villano.class);
