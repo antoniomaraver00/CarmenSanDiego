@@ -33,7 +33,7 @@ public class Pais {
 	public List<String> getCaracteristicas() {
 		return caracteristicas;
 	}
-
+	
 	public String obtenerCaracteristicaRandom() {
 		int indexRandom = -1;
 		
@@ -50,5 +50,12 @@ public class Pais {
 		return conexiones;
 	}
 	
+	public Lugar obtenerLugarRandom() {
+		if( lugares == null ) return null;
+		
+		int idLugarRandom = (int)(Math.random()*(this.lugares.size()-1));
+		
+		return this.lugares.get(idLugarRandom);
+	}
 	
 }
