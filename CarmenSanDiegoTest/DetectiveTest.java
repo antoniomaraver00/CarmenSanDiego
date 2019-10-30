@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 
 import CarmenSanDiego.src.Detective;
 import CarmenSanDiego.src.Pais;
+import CarmenSanDiego.src.Villano;
 
 public class DetectiveTest {
 
@@ -33,5 +34,16 @@ public class DetectiveTest {
 		sherlockHolmes.viajar(inglaterra);
 		
 		Assert.assertEquals(argentina, sherlockHolmes.getPaisActual());
+	}
+	
+	@Test
+	public void generarOrden_elDecetiveGeneraOrdenDeArresto()
+	{
+		Detective detective = new Detective();
+		Villano villano = Mockito.mock(Villano.class);
+		
+		detective.generarOrden(villano);
+		
+		Assert.assertEquals(villano, detective.getSospechosoEnOrden());
 	}
 }
