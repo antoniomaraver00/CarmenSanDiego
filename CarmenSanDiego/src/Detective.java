@@ -1,15 +1,20 @@
 package CarmenSanDiego.src;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Detective {
 	private Villano sospechosoEnOrden = null;
 	private Pais paisActual;
+	private ArrayList<String> pistasObtenidas;
 	
 	public Detective() {
-		this.paisActual = null;
+		this(null);
 	}
 	
 	public Detective(Pais paisActual) {
 		this.paisActual = paisActual;
+		this.pistasObtenidas = new ArrayList<String>();
 	}
 	
 	public void generarOrden(Villano villano)
@@ -32,5 +37,9 @@ public class Detective {
 	public Villano obtenerSospechosoEnOrden()
 	{
 		return sospechosoEnOrden;
+	}
+	
+	public void guardarPistas(List<String> pistas) {
+		this.pistasObtenidas.addAll(pistas);
 	}
 }
