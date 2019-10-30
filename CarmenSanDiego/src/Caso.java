@@ -28,7 +28,7 @@ public class Caso {
 	public String getObjeto() {
 		return objeto;
 	}
-
+		
 	private Pais ultimoPaisDeRuta() {
 		if( this.rutaDeEscape == null ) return null;
 		
@@ -37,6 +37,12 @@ public class Caso {
 	
 	public Boolean paisPerteneceRutaDeEscape(Pais pais) {
 		return rutaDeEscape.contains(pais);
+	}
+	
+	private Boolean esUltimoLugarDeEscape(Lugar lugar) {
+		if( lugar == null ) return false;
+	
+		return lugar == this.ultimoLugarEscape;
 	}
 	
 	public Boolean esPaisFinal(Pais pais) {
@@ -56,7 +62,7 @@ public class Caso {
 		Pais paisActual = detective.obtenerPaisActual();
 		
 		if(esPaisFinal(paisActual)) {
-			if( lugar == ultimoLugarEscape ) {
+			if( esUltimoLugarDeEscape(lugar) ) {
 				Villano sospechoso = detective.obtenerSospechosoEnOrden();
 				
 				if(sospechoso == null || sospechoso != responsable) {
