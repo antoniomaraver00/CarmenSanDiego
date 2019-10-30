@@ -49,9 +49,7 @@ public class Caso {
 		return rutaDeEscape.indexOf(pais) == (rutaDeEscape.size()-1);
 	}
 	
-	private  Boolean esElResponsable(Villano sospechoso) {
-		if( sospechoso == null ) return false;
-		
+	public Boolean esElResponsable(Villano sospechoso) {		
 		return sospechoso == this.responsable;
 	}
 	
@@ -63,6 +61,10 @@ public class Caso {
 		return null;
 	}
 	
+	public Lugar ultimoLugarDeEscape() {
+		return this.ultimoLugarEscape;
+	}
+	
 	public ArrayList<String> obtenerPistasPaisDondeEscapo(Lugar lugar, Detective detective) {
 		ArrayList<String> pistas = new ArrayList<String>();
 		Pais paisActual = detective.obtenerPaisActual();
@@ -72,7 +74,14 @@ public class Caso {
 				Villano sospechoso = detective.obtenerSospechosoEnOrden();
 				
 				if( !esElResponsable(sospechoso) ) {
-					throw new GameOverException("El sospechoso "+sospechoso.obtenerNombre()+" no es el culpable!");
+					String mensaje;
+					
+					if( sospechoso == null) {
+						mensaje = "El villano esta en el lugar, pero no tenia orden de arresto!";
+					} else {
+						mensaje = "El sospechoso "+sospechoso.obtenerNombre()+" no es el culpable!";
+					}
+					throw new GameOverException(mensaje);
 				} else {
 					throw new GameWonException("Atrapo al malechor!");
 				}
