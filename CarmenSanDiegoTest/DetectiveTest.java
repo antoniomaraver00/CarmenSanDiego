@@ -46,4 +46,17 @@ public class DetectiveTest {
 		
 		Assert.assertEquals(villano, detective.getSospechosoEnOrden());
 	}
+	
+	@Test
+	public void generarOrden_GeneroOrdenCuandoYaTengoUnaNoDeberiaModificarse() {
+		Detective detective = new Detective();
+		Villano villano = Mockito.mock(Villano.class);
+		Villano villano2 = Mockito.mock(Villano.class);
+		detective.generarOrden(villano);
+		
+		detective.generarOrden(villano2);
+		
+		Assert.assertEquals(villano, detective.getSospechosoEnOrden());
+	}
+	
 }

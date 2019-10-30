@@ -15,7 +15,9 @@ public class Detective {
 	
 	public void generarOrden(Villano villano)
 	{
-		sospechosoEnOrden = villano;
+		if(sospechosoEnOrden==null) {
+			sospechosoEnOrden = villano;
+		}
 	}
 	
 	public void viajar(Pais paisDestino)
