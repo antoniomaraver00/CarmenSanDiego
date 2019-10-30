@@ -2,6 +2,8 @@ package CarmenSanDiego.src;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.mockito.ArgumentMatchers;
+
 public class Villano {
 	private String nombre;
 	private String sexo;
@@ -32,7 +34,7 @@ public class Villano {
 	
 	public void agregarSenia(String senia) {
 		if (!senias.contains(senia)) {
-			hobbies.add(senia);
+			senias.add(senia);
 			}
 	}
 		
@@ -63,6 +65,10 @@ public class Villano {
 	
 	public String obtenerSexo() {
 		return sexo;
+	}
+
+	public ArrayList<String> obtenerSenias() {
+		return senias;
 	}
 
 }

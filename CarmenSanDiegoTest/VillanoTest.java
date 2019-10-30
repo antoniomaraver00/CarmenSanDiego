@@ -38,4 +38,25 @@ public class VillanoTest {
 		Assert.assertEquals(true,CarmenSanDiego.obtenerHobbies().contains(hobbie));
 	}
 	
+	@Test
+public void agregaSenia_agregarSeniaYDevolverla() {
+		
+		ArrayList<String> seniasCarmenSanDiego = new ArrayList<String>();
+		Villano CarmenSanDiego =new Villano("Carmen SanDiego","Mujer",new ArrayList<String>(),seniasCarmenSanDiego);
+		CarmenSanDiego.agregarSenia("Pelo Rojo");
+		String senia=CarmenSanDiego.obtenerSeniaRandom();
+		Assert.assertEquals("Pelo Rojo",senia);
+		}
+	
+	@Test
+	public void agregarSenia_agregarMasDe1SeniaYDevolverUna() {
+		ArrayList<String> seniasCarmenSanDiego = new ArrayList<String>();
+		Villano CarmenSanDiego =new Villano("Carmen SanDiego","Mujer",new ArrayList<String>(),seniasCarmenSanDiego);
+		CarmenSanDiego.agregarSenia("Pelo Rojo");
+		CarmenSanDiego.agregarSenia("Maneja Convertible");
+		String senia=CarmenSanDiego.obtenerSeniaRandom();
+		Assert.assertEquals(true,CarmenSanDiego.obtenerSenias().contains(senia));
+	}
+	
+	
 }
