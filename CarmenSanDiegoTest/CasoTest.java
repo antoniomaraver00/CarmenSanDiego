@@ -149,7 +149,7 @@ public class CasoTest {
 		
 		Detective detective = new Detective(argentina);
 		
-		Caso caso = new Caso(responsable, rutaDeEscape, "", "", paisDelCrimen, null);
+		Caso caso = new Caso(responsable, rutaDeEscape, "", "", paisDelCrimen, null, bbva);
 		
 		ArrayList<String> pistas = caso.getPistasPaisDondeEscapo(clubMol, detective);
 		
