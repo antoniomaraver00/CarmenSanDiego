@@ -24,6 +24,17 @@ public class Caso {
 		this.ultimoLugarEscape = getLugarRandomDeUltimoPaisDeRuta();
 		this.sospechosos = sospechosos;
 	}
+	
+	public Caso(Villano responsable, List<Pais> rutaDeEscape, String reporte, String objeto, Pais paisDelCrimen, ArrayList<Villano> sospechosos, Lugar ultimoLugar) {
+		this.responsable = responsable;
+		this.rutaDeEscape = rutaDeEscape;
+		this.reporte = reporte;
+		this.objeto = objeto;
+		this.paisDelCrimen = paisDelCrimen;
+		
+		this.ultimoLugarEscape = ultimoLugar;
+		this.sospechosos = sospechosos;
+	}
 
 	public Lugar getLugarRandomDeUltimoPaisDeRuta() {
 		return getUltimoPaisDeRuta().getLugarRandom();
@@ -81,6 +92,11 @@ public class Caso {
 		return this.ultimoLugarEscape;
 	}
 	
+	/* Aqui se puede ver Long method - bad smell */
+	/* Aunque fue refactorizada, se puede notar la longitud del metodo */
+	/* Aunque es clara la funcionalidad de la implementacion, y a fines de mantener la sencillez
+	 * preferimos no refactorizar mas a fin de no agregar mensajes sin sentido
+	 */
 	public ArrayList<String> getPistasPaisDondeEscapo(Lugar lugar, Detective detective) {
 		ArrayList<String> pistas = new ArrayList<String>();
 		Pais paisActual = detective.getPaisActual();
