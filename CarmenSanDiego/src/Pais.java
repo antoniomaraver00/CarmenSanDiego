@@ -39,13 +39,10 @@ public class Pais {
 	}
 	
 	public String getCaracteristicaRandom() {
-		int indexRandom = -1;
+
+		ultimoIndexRandomCaracteristicas = Calculo.obtenerEnteroRandomDiferenteA(caracteristicas.size(), ultimoIndexRandomCaracteristicas);
 		
-		while( (indexRandom = (int)(Math.random() * caracteristicas.size())) == ultimoIndexRandomCaracteristicas );
-		
-		ultimoIndexRandomCaracteristicas = indexRandom;
-		
-		return caracteristicas.get(indexRandom);
+		return caracteristicas.get(ultimoIndexRandomCaracteristicas);
 	}
 	
 	public List<Lugar> getLugares() {
@@ -59,7 +56,7 @@ public class Pais {
 	public Lugar getLugarRandom() {
 		if( lugares == null ) return null;
 		
-		int idLugarRandom = (int)(Math.random()*(this.lugares.size()-1));
+		int idLugarRandom = Calculo.obtenerEnteroRandom(this.lugares.size());
 		
 		return this.lugares.get(idLugarRandom);
 	}

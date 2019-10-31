@@ -46,23 +46,15 @@ public class Villano {
 	}
 	
 	public String getSeniaRandom() {
-		int indexRandom = -1;
+		ultimoIndexRandomSenias = Calculo.obtenerEnteroRandomDiferenteA((senias.size()), ultimoIndexRandomSenias);
 		
-		while( (indexRandom = (int)(Math.random() * senias.size())) == ultimoIndexRandomSenias );
-		
-		ultimoIndexRandomSenias = indexRandom;
-		
-		return senias.get(indexRandom);
+		return senias.get(ultimoIndexRandomSenias);
 	}
 	
 	public String getHobbieRandom() {
-		int indexRandom = -1;
+		ultimoIndexRandomHobbies = Calculo.obtenerEnteroRandomDiferenteA((hobbies.size()), ultimoIndexRandomHobbies);
 		
-		while( (indexRandom = (int)(Math.random() * hobbies.size())) == ultimoIndexRandomHobbies );
-		
-		ultimoIndexRandomHobbies = indexRandom;
-		
-		return hobbies.get(indexRandom);
+		return hobbies.get(ultimoIndexRandomHobbies);
 	}
 	
 	public String getSexo() {

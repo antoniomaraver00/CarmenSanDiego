@@ -60,7 +60,7 @@ public class VillanoTest {
 		
 		String seniaRandom1 = carmen.getSeniaRandom();
 		String seniaRandom2 = carmen.getSeniaRandom();
-				
+		
 		Assert.assertNotEquals( seniaRandom1, seniaRandom2 );
 	}
 	
