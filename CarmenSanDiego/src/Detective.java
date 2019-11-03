@@ -27,6 +27,7 @@ public class Detective {
 			paisActual = paisDestino;
 		}
 	}
+	
 	public Pais getPaisActual()
 	{
 		return paisActual;

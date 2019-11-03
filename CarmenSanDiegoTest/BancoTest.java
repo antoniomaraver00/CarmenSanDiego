@@ -26,6 +26,6 @@ public class BancoTest {
 		
 		pistas.addAll(bancoProvincia.modelarPistas(villano,paisSiguiente));
 
-		Assert.assertEquals(true, pistasEsperadas.equals(pistas));
+		Assert.assertTrue(pistasEsperadas.equals(pistas));
 	}
 }

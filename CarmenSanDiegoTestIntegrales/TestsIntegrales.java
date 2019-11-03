@@ -14,13 +14,15 @@ import CarmenSanDiego.src.Caso;
 import CarmenSanDiego.src.Club;
 import CarmenSanDiego.src.Detective;
 import CarmenSanDiego.src.Embajada;
+import CarmenSanDiego.src.GameOverException;
+import CarmenSanDiego.src.GameWonException;
 import CarmenSanDiego.src.Lugar;
 import CarmenSanDiego.src.Mapamundi;
 import CarmenSanDiego.src.Pais;
 import CarmenSanDiego.src.Villano;
 
 public class TestsIntegrales {
-	@Test
+	@Test(expected = GameOverException.class)
 	public void CasoQueLlegaAlFinalSinGenerarOrden() {
 		//ARGENTINA
 		ArrayList<String> caracteristicasArgentina = new ArrayList<String>();
@@ -101,7 +103,7 @@ public class TestsIntegrales {
 		
 		Detective julian = new Detective(argentina);
 		
-		try {
+
 			System.out.println(bancoNacion.getPistas(caso, julian));
 			
 			julian.viajar(chile);
@@ -110,16 +112,13 @@ public class TestsIntegrales {
 			
 			julian.viajar(brasil);
 			
+			//o usamos spy o lo fijamos de alguna manera
 			System.out.println(clubMacaco.getPistas(caso, julian));
 			System.out.println(bibliotecaJaneiro.getPistas(caso, julian));
 			System.out.println(embajadaBrasil.getPistas(caso, julian));
-		} catch( RuntimeException e ) {
-			System.out.println(e.getMessage());
-			Assert.assertTrue(e.getMessage().contains("perdio"));
-		}
 	}
 	
-	@Test
+	@Test(expected = GameOverException.class)
 	public void CasoQueLlegaAlFinalConOrdenErroneaYPierde() {
 		//ARGENTINA
 		ArrayList<String> caracteristicasArgentina = new ArrayList<String>();
@@ -200,7 +199,6 @@ public class TestsIntegrales {
 		
 		Detective julian = new Detective(argentina);
 		
-		try {
 			System.out.println(embajada.getPistas(caso, julian));
 			
 			julian.viajar(chile);
@@ -214,13 +212,10 @@ public class TestsIntegrales {
 			System.out.println(clubMacaco.getPistas(caso, julian));
 			System.out.println(bibliotecaJaneiro.getPistas(caso, julian));
 			System.out.println(embajadaBrasil.getPistas(caso, julian));
-		} catch( RuntimeException e ) {
-			System.out.println(e.getMessage());
-			Assert.assertTrue(e.getMessage().contains("perdio"));
-		}
+
 	}
 	
-	@Test
+	@Test(expected = GameWonException.class)
 	public void CasoQueLlegaAlFinalConOrdenCorrectaYGana() {
 		//ARGENTINA
 		ArrayList<String> caracteristicasArgentina = new ArrayList<String>();
@@ -301,7 +296,6 @@ public class TestsIntegrales {
 		
 		Detective julian = new Detective(argentina);
 		
-		try {
 			System.out.println(embajada.getPistas(caso, julian));
 			
 			julian.viajar(chile);
@@ -315,9 +309,6 @@ public class TestsIntegrales {
 			System.out.println(clubMacaco.getPistas(caso, julian));
 			System.out.println(bibliotecaJaneiro.getPistas(caso, julian));
 			System.out.println(embajadaBrasil.getPistas(caso, julian));
-		} catch( RuntimeException e ) {
-			System.out.println(e.getMessage());
-			Assert.assertTrue(e.getMessage().contains("Atrapo al malechor"));
-		}
+		
 	}
 }

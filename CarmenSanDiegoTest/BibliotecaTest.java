@@ -26,7 +26,7 @@ public class BibliotecaTest {
 		pistasEsperadas.add("le gusta jugar a la pelota");
 		
 		pistas.addAll(biblioteca.modelarPistas(villano, paisSiguiente));
-		
+	
 		Assert.assertEquals(true, pistasEsperadas.containsAll(pistas));
 	}
 }
