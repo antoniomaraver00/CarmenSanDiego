@@ -1,9 +1,6 @@
 package CarmenSanDiegoTest;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Test;
 import org.junit.Assert;
@@ -156,7 +153,7 @@ public class CasoTest {
 		Assert.assertEquals("Estas cerca...", pistas.get(0));
 	}
 	
-	@Test
+	@Test(expected = GameOverException.class)
 	public void getPistasPaisDondeEscapo_PaisEsPaisFinalYPreguntaEnLugarDelVillanoYNoTieneSospechosoEnOrden_Pierde() {
 		Villano responsable = Mockito.mock(Villano.class);
 		ArrayList<Pais> rutaDeEscape = new ArrayList<Pais>();
@@ -179,13 +176,10 @@ public class CasoTest {
 		
 		Lugar ultimoLugarDeEscape = caso.getUltimoLugarDeEscape();
 		
-		assertThrows(GameOverException.class, () -> {
-			ArrayList<String> pistas = new ArrayList<String>();
-			pistas = caso.getPistasPaisDondeEscapo(ultimoLugarDeEscape, detective);
-		});
+		caso.getPistasPaisDondeEscapo(ultimoLugarDeEscape, detective);
 	}
 	
-	@Test
+	@Test(expected = GameOverException.class)
 	public void getPistasPaisDondeEscapo_PaisEsPaisFinalYPreguntaEnLugarDelVillanoYTieneOrdenIncorrecta_Pierde() {
 		Villano responsable = Mockito.mock(Villano.class);
 		Villano sospechosoIncorrecto = Mockito.mock(Villano.class);
@@ -211,13 +205,10 @@ public class CasoTest {
 		
 		Lugar ultimoLugarDeEscape = caso.getUltimoLugarDeEscape();
 		
-		assertThrows(GameOverException.class, () -> {
-			ArrayList<String> pistas = new ArrayList<String>();
-			pistas = caso.getPistasPaisDondeEscapo(ultimoLugarDeEscape, detective);
-		});
+		caso.getPistasPaisDondeEscapo(ultimoLugarDeEscape, detective);
 	}
 	
-	@Test
+	@Test(expected = GameWonException.class)
 	public void getPistasPaisDondeEscapo_PaisEsPaisFinalYPreguntaEnLugarDelVillanoYTieneOrdenCorrecta_Gana() {
 		Villano responsable = Mockito.mock(Villano.class);
 		
@@ -242,10 +233,7 @@ public class CasoTest {
 		
 		Lugar ultimoLugarDeEscape = caso.getUltimoLugarDeEscape();
 		
-		assertThrows(GameWonException.class, () -> {
-			ArrayList<String> pistas = new ArrayList<String>();
-			pistas = caso.getPistasPaisDondeEscapo(ultimoLugarDeEscape, detective);
-		});
+		caso.getPistasPaisDondeEscapo(ultimoLugarDeEscape, detective);
 	}
 	
 	@Test

@@ -1,9 +1,6 @@
 package CarmenSanDiegoTest;
 
 import org.junit.Test;
-
-import java.util.ArrayList;
-
 import org.junit.Assert;
 
 import org.mockito.Mockito;

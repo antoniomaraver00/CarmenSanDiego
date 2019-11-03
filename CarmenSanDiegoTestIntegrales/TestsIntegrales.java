@@ -1,11 +1,9 @@
 package CarmenSanDiegoTestIntegrales;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import CarmenSanDiego.src.Banco;
@@ -99,23 +97,19 @@ public class TestsIntegrales {
 		sospechosos.add(carmenSanDiego);
 		sospechosos.add(marioPorte);
 		
-		Caso caso = new Caso(carmenSanDiego, rutaDeEscape, "Se han robado la espada de San Martin", "Espada de San Martin", argentina, sospechosos);
+		Caso caso = new Caso(carmenSanDiego, rutaDeEscape, "Se han robado la espada de San Martin", "Espada de San Martin", argentina, sospechosos, clubMacaco);
 		
 		Detective julian = new Detective(argentina);
 		
-
-			System.out.println(bancoNacion.getPistas(caso, julian));
-			
-			julian.viajar(chile);
-			
-			System.out.println(clubAWE.getPistas(caso, julian));
-			
-			julian.viajar(brasil);
-			
-			//o usamos spy o lo fijamos de alguna manera
-			System.out.println(clubMacaco.getPistas(caso, julian));
-			System.out.println(bibliotecaJaneiro.getPistas(caso, julian));
-			System.out.println(embajadaBrasil.getPistas(caso, julian));
+		bancoNacion.getPistas(caso, julian);
+		
+		julian.viajar(chile);
+		
+		clubAWE.getPistas(caso, julian);
+		
+		julian.viajar(brasil);
+		
+		clubMacaco.getPistas(caso, julian);
 	}
 	
 	@Test(expected = GameOverException.class)
@@ -195,24 +189,21 @@ public class TestsIntegrales {
 		sospechosos.add(carmenSanDiego);
 		sospechosos.add(marioPorte);
 		
-		Caso caso = new Caso(marioPorte, rutaDeEscape, "Se han robado la espada de San Martin", "Espada de San Martin", argentina, sospechosos);
+		Caso caso = new Caso(marioPorte, rutaDeEscape, "Se han robado la espada de San Martin", "Espada de San Martin", argentina, sospechosos, clubMacaco);
 		
 		Detective julian = new Detective(argentina);
 		
-			System.out.println(embajada.getPistas(caso, julian));
-			
-			julian.viajar(chile);
-			
-			System.out.println(bibNacional.getPistas(caso, julian));
-			
-			julian.viajar(brasil);
-			
-			julian.generarOrden(carmenSanDiego);
-			
-			System.out.println(clubMacaco.getPistas(caso, julian));
-			System.out.println(bibliotecaJaneiro.getPistas(caso, julian));
-			System.out.println(embajadaBrasil.getPistas(caso, julian));
-
+		embajada.getPistas(caso, julian);
+		
+		julian.viajar(chile);
+		
+		bibNacional.getPistas(caso, julian);
+		
+		julian.viajar(brasil);
+		
+		julian.generarOrden(carmenSanDiego);
+		
+		clubMacaco.getPistas(caso, julian);
 	}
 	
 	@Test(expected = GameWonException.class)
@@ -292,23 +283,20 @@ public class TestsIntegrales {
 		sospechosos.add(carmenSanDiego);
 		sospechosos.add(marioPorte);
 		
-		Caso caso = new Caso(marioPorte, rutaDeEscape, "Se han robado la espada de San Martin", "Espada de San Martin", argentina, sospechosos);
+		Caso caso = new Caso(marioPorte, rutaDeEscape, "Se han robado la espada de San Martin", "Espada de San Martin", argentina, sospechosos, clubMacaco);
 		
 		Detective julian = new Detective(argentina);
 		
-			System.out.println(embajada.getPistas(caso, julian));
-			
-			julian.viajar(chile);
-			
-			System.out.println(bibNacional.getPistas(caso, julian));
-			
-			julian.viajar(brasil);
-			
-			julian.generarOrden(marioPorte);
-			
-			System.out.println(clubMacaco.getPistas(caso, julian));
-			System.out.println(bibliotecaJaneiro.getPistas(caso, julian));
-			System.out.println(embajadaBrasil.getPistas(caso, julian));
+		embajada.getPistas(caso, julian);
 		
+		julian.viajar(chile);
+		
+		bibNacional.getPistas(caso, julian);
+		
+		julian.viajar(brasil);
+		
+		julian.generarOrden(marioPorte);
+		
+		clubMacaco.getPistas(caso, julian);
 	}
 }

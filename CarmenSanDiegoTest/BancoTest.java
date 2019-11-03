@@ -1,5 +1,4 @@
 package CarmenSanDiegoTest;
-import CarmenSanDiego.src.Lugar;
 import CarmenSanDiego.src.Pais;
 import CarmenSanDiego.src.Banco;
 import CarmenSanDiego.src.Villano;

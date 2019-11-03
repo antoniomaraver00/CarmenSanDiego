@@ -2,9 +2,9 @@ package CarmenSanDiegoTest;
 
 import java.util.ArrayList;
 
+import org.junit.Assert;
 import org.junit.Test;
 import CarmenSanDiego.src.Pais;
-import junit.framework.Assert;
 import CarmenSanDiego.src.Lugar;
 import CarmenSanDiego.src.Mapamundi;
 
@@ -17,7 +17,7 @@ public class MapaMundiTest {
 		
 		mapa.asignarConexion(argentina, chile);
 		
-		Assert.assertEquals(true, (argentina.hayConexion(chile) && chile.hayConexion(argentina)));
+		Assert.assertTrue(argentina.hayConexion(chile) && chile.hayConexion(argentina));
 		
 	}
 }
