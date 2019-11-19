@@ -49,7 +49,15 @@ public class PaginaDeInicio extends JFrame {
 	bResolverMisterio.setBounds(80, 87, 160, 23);
 	contentPane.add(bResolverMisterio);
 	
-	JButton bExpedientes=new JButton("Expedientes");
+	JButton bExpedientes = new JButton("Expedientes");
+	bExpedientes.addActionListener(new ActionListener(){
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Expedientes ventana = new Expedientes();
+			ventana.setVisible(true);
+		}
+	});
+	
 	bExpedientes.setFont(new Font("Tahoma", Font.PLAIN, 14));
 	bExpedientes.setBounds(250, 87, 160, 23);
 	contentPane.add(bExpedientes);
