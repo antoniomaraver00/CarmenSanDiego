@@ -45,6 +45,14 @@ public class PaginaDeInicio extends JFrame {
 	contentPane.add(label);
 	
 	JButton bResolverMisterio = new JButton("Resolver Misterio");
+	bResolverMisterio.addActionListener(new ActionListener(){
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			ResolverMisterio ventana = new ResolverMisterio();
+			ventana.setVisible(true);
+		}
+	});
+	
 	bResolverMisterio.setFont(new Font("Tahoma", Font.PLAIN, 14));
 	bResolverMisterio.setBounds(80, 87, 160, 23);
 	contentPane.add(bResolverMisterio);
