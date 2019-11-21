@@ -11,10 +11,12 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
+import javax.swing.BoxLayout;
 
 public class PaginaDeInicio extends JFrame {
 	private static final long serialVersionUID = -7797745868537851156L;
 	private JPanel contentPane;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -32,43 +34,28 @@ public class PaginaDeInicio extends JFrame {
 	}
 	
 	public PaginaDeInicio() {
-	setTitle("Carmen San Diego");
-	setBounds(100, 100, 500, 178);
-	contentPane = new JPanel();
-	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-	setContentPane(contentPane);
-	contentPane.setLayout(null);
-
-	Label label = new Label("¿Que haremos ahora Detective?");
-	label.setFont(new Font("Dialog", Font.PLAIN, 14));
-	label.setBounds(23, 59, 250, 22);
-	contentPane.add(label);
+		setTitle("Carmen San Diego");
+		setBounds(100, 100, 500, 178);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 	
-	JButton bResolverMisterio = new JButton("Resolver Misterio");
-	bResolverMisterio.addActionListener(new ActionListener(){
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			ResolverMisterio ventana = new ResolverMisterio();
-			ventana.setVisible(true);
-		}
-	});
-	
-	bResolverMisterio.setFont(new Font("Tahoma", Font.PLAIN, 14));
-	bResolverMisterio.setBounds(80, 87, 160, 23);
-	contentPane.add(bResolverMisterio);
-	
-	JButton bExpedientes = new JButton("Expedientes");
-	bExpedientes.addActionListener(new ActionListener(){
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			Expedientes ventana = new Expedientes();
-			ventana.setVisible(true);
-		}
-	});
-	
-	bExpedientes.setFont(new Font("Tahoma", Font.PLAIN, 14));
-	bExpedientes.setBounds(250, 87, 160, 23);
-	contentPane.add(bExpedientes);
-	
+		Label label = new Label("ï¿½Que haremos ahora Detective?");
+		label.setAlignment(Label.CENTER);
+		label.setFont(new Font("Dialog", Font.PLAIN, 14));
+		contentPane.add(label);
+		
+		JButton bResolverMisterio = new JButton("Resolver Misterio");
+		bResolverMisterio.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ResolverMisterio ventana = new ResolverMisterio();
+				ventana.setVisible(true);
+			}
+		});
+		
+		bResolverMisterio.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		contentPane.add(bResolverMisterio);
 	}
 }
