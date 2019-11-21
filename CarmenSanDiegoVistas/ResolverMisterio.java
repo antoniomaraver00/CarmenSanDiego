@@ -7,6 +7,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import CarmenSanDiego.src.DataDummy;
+import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
+
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -17,7 +21,7 @@ import javax.swing.SwingConstants;
 
 
 public class ResolverMisterio extends JFrame{
-
+	private ResolverMisterioViewModel modelo;
 	private JPanel contentPane;
 
 	/**
@@ -38,6 +42,7 @@ public class ResolverMisterio extends JFrame{
 		
 	
 	public ResolverMisterio() {
+		crearModelo();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 500, 580, 600);
 		contentPane = new JPanel();
@@ -48,7 +53,7 @@ public class ResolverMisterio extends JFrame{
 		JButton bElegirOtro = new JButton("Elegir Otro");
 		bElegirOtro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				
 			}
 		});
 		bElegirOtro.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -66,5 +71,15 @@ public class ResolverMisterio extends JFrame{
 		contentPane.add(bAceptar);
 		
 }
+
+
+	private void crearModelo() {
+		modelo = new ResolverMisterioViewModel();
+		
+		DataDummy data = new DataDummy();
+		
+		modelo.setCasos(data.crearCasos());
+		modelo.setCasoSeleccionado(modelo.getCasos().get(0));
+	}
 	
 }
