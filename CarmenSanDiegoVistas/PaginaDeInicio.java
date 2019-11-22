@@ -54,10 +54,10 @@ public class PaginaDeInicio extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(2, 1, 0, 0));
 		
-		Label label = new Label("Como se llama Detective?");
-		label.setAlignment(Label.CENTER);
-		label.setFont(new Font("Dialog", Font.PLAIN, 14));
-		contentPane.add(label);
+		Label saludo = new Label("Como se llama Detective?");
+		saludo.setAlignment(Label.CENTER);
+		saludo.setFont(new Font("Dialog", Font.PLAIN, 14));
+		contentPane.add(saludo);
 		
 		buttonsPane = new JPanel();
 		buttonsPane.setBorder(new EmptyBorder(5, 5, 5, 5));
