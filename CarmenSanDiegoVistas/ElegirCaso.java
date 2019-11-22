@@ -91,11 +91,12 @@ public class ElegirCaso extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				ResolviendoCaso ventanaResolverCaso=new ResolviendoCaso();
 				ventanaResolverCaso.setVisible(true);
-				
+				setVisible(false);
 			}
 		});
 		bAceptar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panelBotones.add(bAceptar);
+		
 		
 }
 

@@ -26,5 +26,13 @@ import java.awt.Insets;
 public class ResolviendoCaso extends JFrame{
 	private JPanel contentPane;
 	
+	public ResolviendoCaso() {
+		setTitle("resolviendo caso"+"'nombre caso'");
+		setBounds(300, 500, 580, 600);
 
+		contentPane = new JPanel();
+	    contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		
+	}
 }

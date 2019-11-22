@@ -54,7 +54,7 @@ public class PaginaDeInicio extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(2, 1, 0, 0));
 		
-		Label label = new Label("�Que haremos ahora Detective?");
+		Label label = new Label("Como se llama Detective?");
 		label.setAlignment(Label.CENTER);
 		label.setFont(new Font("Dialog", Font.PLAIN, 14));
 		contentPane.add(label);
@@ -78,6 +78,7 @@ public class PaginaDeInicio extends JFrame {
 				} else {
 					ElegirCaso ventana = new ElegirCaso(nombreTextField.getText());
 					ventana.setVisible(true);	
+					setVisible(false);
 				}
 			}
 		});
