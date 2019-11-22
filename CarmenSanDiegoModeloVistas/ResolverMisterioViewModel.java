@@ -7,6 +7,8 @@ import CarmenSanDiego.src.Caso;
 public class ResolverMisterioViewModel {
 	private ArrayList<Caso> casos;
 	private Caso casoSeleccionado;
+	private String nombre;
+	
 	
 	public ArrayList<Caso> getCasos() {
 		return casos;
@@ -22,5 +24,26 @@ public class ResolverMisterioViewModel {
 
 	public void setCasoSeleccionado(Caso casoSeleccionado) {
 		this.casoSeleccionado = casoSeleccionado;
+	}
+	
+	private Caso obtenerCasoRandom() {
+		int rand = (int)Math.random()*(casos.size()-1);
+		
+		return casos.get(rand);
+	}
+	
+	public void setCasoSeleccionadoRandom() {
+		int i = this.casos.indexOf(casoSeleccionado);
+		if(++i >= casos.size()) i = 0;
+		
+		this.casoSeleccionado = casos.get(i);
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 }

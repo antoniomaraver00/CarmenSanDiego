@@ -1,6 +1,7 @@
 package CarmenSanDiegoVistas;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JButton;
@@ -14,51 +15,74 @@ import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
+import java.awt.GridLayout;
+import java.awt.FlowLayout;
+import java.awt.CardLayout;
 
 
 public class ResolverMisterio extends JFrame{
 	private ResolverMisterioViewModel modelo;
-	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ResolverMisterio frame = new ResolverMisterio();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}	
-		
+	private JPanel contentPane;		
+	private JLabel frase;
+	private JLabel descripcion;
 	
-	public ResolverMisterio() {
-		crearModelo();
+	public ResolverMisterio(String nombre) {
+		crearModelo(nombre);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 500, 580, 600);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(null);
+	    
+	    contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setTitle(modelo.getCasoSeleccionado().getObjeto());
 		setContentPane(contentPane);
+		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 		
+		JPanel panelDescr = new JPanel();
+		frase = new JLabel(nombre+" tenemos un caso para usted:");
+		frase.setBounds(0, 0, 570, 62);
+		descripcion = new JLabel(modelo.getCasoSeleccionado().getReporte());
+		descripcion.setBounds(0, 124, 570, 62);
+		
+		panelDescr.setLayout(null);
+		panelDescr.add(frase);
+		panelDescr.add(descripcion);
+		
+		contentPane.add(panelDescr);
+		
+		JPanel panelBotones = new JPanel(new GridBagLayout()){
+	        @Override
+	        public Dimension getMinimumSize() {
+	            return new Dimension(400, 300);
+	        }
+
+	        @Override
+	        public Dimension getPreferredSize() {
+	            return new Dimension(800, 600);
+	        }
+
+	        @Override
+	        public Dimension getMaximumSize() {
+	            return new Dimension(800, 600);
+	        }
+	    };
+	    
+	    contentPane.add(panelBotones);
+	    
 		JButton bElegirOtro = new JButton("Elegir Otro");
 		bElegirOtro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				modelo.setCasoSeleccionadoRandom();
+				descripcion.setText(modelo.getCasoSeleccionado().getReporte());
 			}
 		});
+		
 		bElegirOtro.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		bElegirOtro.setBounds(100, 400, 130, 38);
-		contentPane.add(bElegirOtro);
+		panelBotones.add(bElegirOtro);
 		
 		JButton bAceptar = new JButton("Aceptar Caso");
 		bAceptar.addActionListener(new ActionListener() {
@@ -67,14 +91,14 @@ public class ResolverMisterio extends JFrame{
 			}
 		});
 		bAceptar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		bAceptar.setBounds(350, 400, 130,38);
-		contentPane.add(bAceptar);
+		panelBotones.add(bAceptar);
 		
 }
 
 
-	private void crearModelo() {
+	private void crearModelo(String nombre) {
 		modelo = new ResolverMisterioViewModel();
+		modelo.setNombre(nombre);
 		
 		DataDummy data = new DataDummy();
 		
