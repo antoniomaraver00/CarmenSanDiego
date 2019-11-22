@@ -25,13 +25,13 @@ import java.awt.FlowLayout;
 import java.awt.CardLayout;
 
 
-public class ResolverMisterio extends JFrame{
+public class ElegirCaso extends JFrame{
 	private ResolverMisterioViewModel modelo;
 	private JPanel contentPane;		
 	private JLabel frase;
 	private JLabel descripcion;
 	
-	public ResolverMisterio(String nombre) {
+	public ElegirCaso(String nombre) {
 		crearModelo(nombre);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 500, 580, 600);
@@ -43,7 +43,7 @@ public class ResolverMisterio extends JFrame{
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanel panelDescr = new JPanel();
-		frase = new JLabel(nombre+" tenemos un caso para usted:");
+		frase = new JLabel("Detective " +nombre+" tenemos un caso para usted:");
 		frase.setBounds(0, 0, 570, 62);
 		descripcion = new JLabel(modelo.getCasoSeleccionado().getReporte());
 		descripcion.setBounds(0, 124, 570, 62);
@@ -87,8 +87,11 @@ public class ResolverMisterio extends JFrame{
 		
 		JButton bAceptar = new JButton("Aceptar Caso");
 		bAceptar.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				ResolviendoCaso ventanaResolverCaso=new ResolviendoCaso();
+				ventanaResolverCaso.setVisible(true);
+				
 			}
 		});
 		bAceptar.setFont(new Font("Tahoma", Font.PLAIN, 14));

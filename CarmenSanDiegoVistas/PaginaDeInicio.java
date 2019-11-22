@@ -76,7 +76,7 @@ public class PaginaDeInicio extends JFrame {
 				{
 					JOptionPane.showMessageDialog(contentPane, "Debe ingresar su nombre!");
 				} else {
-					ResolverMisterio ventana = new ResolverMisterio(nombreTextField.getText());
+					ElegirCaso ventana = new ElegirCaso(nombreTextField.getText());
 					ventana.setVisible(true);	
 				}
 			}
@@ -84,5 +84,6 @@ public class PaginaDeInicio extends JFrame {
 		
 		bResolverMisterio.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		buttonsPane.add(bResolverMisterio);
+		
 	}
 }
