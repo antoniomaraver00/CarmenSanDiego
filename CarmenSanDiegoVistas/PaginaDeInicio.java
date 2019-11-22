@@ -23,7 +23,7 @@ import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import net.miginfocom.swing.MigLayout;
+
 
 public class PaginaDeInicio extends JFrame {
 	private static final long serialVersionUID = -7797745868537851156L;

@@ -78,6 +78,7 @@ public class ResolverMisterio extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				modelo.setCasoSeleccionadoRandom();
 				descripcion.setText(modelo.getCasoSeleccionado().getReporte());
+				setTitle(modelo.getCasoSeleccionado().getObjeto());
 			}
 		});
 		
@@ -103,7 +104,7 @@ public class ResolverMisterio extends JFrame{
 		DataDummy data = new DataDummy();
 		
 		modelo.setCasos(data.crearCasos());
-		modelo.setCasoSeleccionado(modelo.getCasos().get(0));
+		modelo.setCasoSeleccionadoRandom();
 	}
 	
 }
