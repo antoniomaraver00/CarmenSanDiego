@@ -28,7 +28,7 @@ import java.awt.Insets;
 
 public class ResolviendoCaso extends JFrame{
 	private JPanel contentPane;
-/*
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,9 +41,9 @@ public class ResolviendoCaso extends JFrame{
 			}
 		});
 	}
-*/	
+	
 	public ResolviendoCaso() {
-		setTitle("resolviendo caso"+"'nombre caso'");
+		setTitle("Resolviendo caso"+"'nombre caso'");
 		setSize(600, 600);
 		setLocationRelativeTo(null);
 		
@@ -54,8 +54,8 @@ public class ResolviendoCaso extends JFrame{
 		contentPane.setLayout(null);
 		
 		//etiqueta donde se encuentra
-		Label label = new Label("estan en "+"'pais' ");
-		label.setBounds(0, 0, 100, 50);
+		Label label = new Label("Estan en "+"'pais' ");
+		label.setBounds(50, 0, 100, 50);
 		contentPane.add(label);
 		
 		//creo panel lugares
@@ -65,7 +65,7 @@ public class ResolviendoCaso extends JFrame{
 		contentPane.add(panelLugares);
 			//etiqueta lugares
 		Label lugares= new Label("Lugares");
-		lugares.setBounds(0, 0, 300, 30);
+		lugares.setBounds(50, 0, 250, 30);
 		panelLugares.add(lugares);
 			//botones lugares
 		JButton biblioteca = new JButton("Biblioteca");
@@ -84,16 +84,50 @@ public class ResolviendoCaso extends JFrame{
 		//creo panel acciones
 		JPanel panelAcciones = new JPanel();
 		panelAcciones.setBounds(300, 50, 300, 280);
+		panelAcciones.setLayout(null);
 		contentPane.add(panelAcciones);
+		Label acciones = new Label("Acciones");
+		acciones.setBounds(50, 0,250, 30);
+		panelAcciones.add(acciones);
+		JButton orden = new JButton("Orden de arresto");
+		orden.setBounds(50, 50, 200, 50);
+		panelAcciones.add(orden);
+		Label ordenEmitida = new Label("Orden emitida: no emitida");
+		ordenEmitida.setBounds(50, 100, 250, 30);
+		panelAcciones.add(ordenEmitida);
+		JButton viajar = new JButton("Viajar");
+		viajar.setBounds(50, 140, 200, 50);
+		panelAcciones.add(viajar);
+		JButton expedientes = new JButton("Expedientes");
+		expedientes.setBounds(50,210, 200, 50);
+		panelAcciones.add(expedientes);
 		
 		//creo panel paises visitados
 		JPanel panelRecorridoCriminal = new JPanel();
 		panelRecorridoCriminal.setBounds(0,330, 300, 250);
+		panelRecorridoCriminal.setLayout(null);
 		contentPane.add(panelRecorridoCriminal);
+		Label recorrido = new Label("Recorrido por el criminal");
+		recorrido.setBounds(25, 0, 250, 30);
+		recorrido.setBackground(Color.gray);
+		recorrido.setAlignment(Label.CENTER);
+		panelRecorridoCriminal.add(recorrido);
+		Label label1 = new Label("agregar paises");
+		label1.setBounds(25, 40, 200, 30);
+		panelRecorridoCriminal.add(label1);
 		
 		//creo panel paises visitado y no estuvo el criminal
 		JPanel panelRecorridoFallido = new JPanel();
 		panelRecorridoFallido.setBounds(300,330, 300, 250);
+		panelRecorridoFallido.setLayout(null);
 		contentPane.add(panelRecorridoFallido);
+		Label recorridoFallido = new Label("Desino fallido");
+		recorridoFallido.setBounds(25, 0, 250, 30);
+		recorridoFallido.setBackground(Color.gray);
+		recorridoFallido.setAlignment(Label.CENTER);
+		panelRecorridoFallido.add(recorridoFallido);
+		Label label2 = new Label("agregar paises");
+		label2.setBounds(25, 40, 200, 30);
+		panelRecorridoFallido.add(label2);
 	}
 }
