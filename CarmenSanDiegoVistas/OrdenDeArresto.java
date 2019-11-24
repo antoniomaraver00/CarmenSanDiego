@@ -84,7 +84,7 @@ public class OrdenDeArresto extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				dispose();
 			}
 		});
 		
@@ -97,7 +97,7 @@ public class OrdenDeArresto extends JFrame {
 				int confirmacion = JOptionPane.showConfirmDialog(null, mensaje, "Confirmar orden", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if(confirmacion == JOptionPane.YES_OPTION) {
 					controlador.generarOrden(nombreVillanos.get(villanos.getSelectedIndex()));
-					setVisible(false);
+					dispose();
 				}	
 			}
 		});

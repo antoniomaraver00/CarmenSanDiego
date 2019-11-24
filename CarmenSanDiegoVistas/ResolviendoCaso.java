@@ -12,6 +12,7 @@ import CarmenSanDiego.src.Caso;
 import CarmenSanDiego.src.Detective;
 import CarmenSanDiego.src.Villano;
 import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
+import CarmenSanDiegoVistas.VentanaSeCierraListener;
 
 import java.awt.Label;
 import java.awt.Font;
@@ -178,6 +179,8 @@ public class ResolviendoCaso extends JFrame{
 			}
 		});
 		
+		
+		
 		//Funcionalidad a orden de arresto
 		orden.addActionListener(new ActionListener() {
 			
@@ -186,6 +189,13 @@ public class ResolviendoCaso extends JFrame{
 				if(modelo.getDetective().getSospechosoEnOrden()==null) {
 					OrdenDeArresto ventanaOrden = new OrdenDeArresto(modelo);
 					ventanaOrden.setVisible(true);
+					ventanaOrden.addWindowListener(new VentanaSeCierraListener() {
+
+						@Override
+						public void windowClosed(WindowEvent e) {
+							ordenEmitida.setText("Orden emitida: "+nombreVillano);
+						}
+					});
 				}else {
 					JOptionPane.showMessageDialog(contentPane, "ya genero orden,no se puede cambiar");
 				}
