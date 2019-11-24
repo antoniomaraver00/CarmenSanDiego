@@ -3,13 +3,24 @@ package CarmenSanDiegoModeloVistas;
 import java.util.ArrayList;
 
 import CarmenSanDiego.src.Caso;
+import CarmenSanDiego.src.Detective;
 
 public class ResolverMisterioViewModel {
 	private ArrayList<Caso> casos;
 	private Caso casoSeleccionado;
-	private String nombre;
+	private Detective detective;
 	
 	
+	
+	public Detective getDetective() {
+		return detective;
+	}
+
+	public void crearDetective(String nombre) {
+		detective = new Detective(casoSeleccionado.getPaisInicio());
+		detective.setNombre(nombre);
+	}
+
 	public ArrayList<Caso> getCasos() {
 		return casos;
 	}
@@ -39,11 +50,4 @@ public class ResolverMisterioViewModel {
 		this.casoSeleccionado = casos.get(i);
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
 }

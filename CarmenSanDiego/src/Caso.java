@@ -178,4 +178,8 @@ public class Caso {
 		
 		return streamSospechososFiltrado.collect(Collectors.toCollection(ArrayList::new));
 	}
+
+	public Pais getPaisInicio() {
+		return this.rutaDeEscape.get(0);
+	}
 }

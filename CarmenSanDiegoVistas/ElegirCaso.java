@@ -43,7 +43,7 @@ public class ElegirCaso extends JFrame{
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanel panelDescr = new JPanel();
-		frase = new JLabel("Detective " +nombre+" tenemos un caso para usted:");
+		frase = new JLabel(nombre+" tenemos un caso para usted:");
 		frase.setBounds(0, 0, 570, 62);
 		descripcion = new JLabel(modelo.getCasoSeleccionado().getReporte());
 		descripcion.setBounds(0, 124, 570, 62);
@@ -89,7 +89,7 @@ public class ElegirCaso extends JFrame{
 		bAceptar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				ResolviendoCaso ventanaResolverCaso=new ResolviendoCaso(modelo.getCasoSeleccionado());
+				ResolviendoCaso ventanaResolverCaso=new ResolviendoCaso(modelo);
 				ventanaResolverCaso.setVisible(true);
 				setVisible(false);
 			}
@@ -103,12 +103,10 @@ public class ElegirCaso extends JFrame{
 
 	private void crearModelo(String nombre) {
 		modelo = new ResolverMisterioViewModel();
-		modelo.setNombre(nombre);
-		
 		DataDummy data = new DataDummy();
-		
 		modelo.setCasos(data.crearCasos());
 		modelo.setCasoSeleccionadoRandom();
+		modelo.crearDetective(nombre);
 	}
 	
 }
