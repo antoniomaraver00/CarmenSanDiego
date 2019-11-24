@@ -11,6 +11,7 @@ import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -92,9 +93,12 @@ public class OrdenDeArresto extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int n = villanos.getSelectedIndex();
-				controlador.generarOrden(nombreVillanos.get(n));
-				setVisible(false);
+				String mensaje = "desea generar la orden a "+nombreVillanos.get(villanos.getSelectedIndex())+"?";
+				int confirmacion = JOptionPane.showConfirmDialog(null, mensaje, "Confirmar orden", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				if(confirmacion == JOptionPane.YES_OPTION) {
+					controlador.generarOrden(nombreVillanos.get(villanos.getSelectedIndex()));
+					setVisible(false);
+				}	
 			}
 		});
 	}
