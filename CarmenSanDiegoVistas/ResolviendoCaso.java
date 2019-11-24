@@ -10,6 +10,7 @@ import com.sun.org.apache.regexp.internal.REDebugCompiler;
 
 import CarmenSanDiego.src.Caso;
 import CarmenSanDiego.src.Detective;
+import CarmenSanDiego.src.Lugar;
 import CarmenSanDiego.src.Villano;
 import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
 import CarmenSanDiegoVistas.VentanaSeCierraListener;
@@ -20,6 +21,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
 import java.awt.CardLayout;
@@ -74,27 +76,16 @@ public class ResolviendoCaso extends JFrame{
 		contentPane.add(panelLugares);
 		
 		//etiqueta lugares
-		Label lugares= new Label("Lugares");
-		lugares.setBounds(50, 0, 250, 30);
-		panelLugares.add(lugares);
-		
-		//botones lugares
-		JButton biblioteca = new JButton("Biblioteca");
-		biblioteca.setBounds(50, 30, 200, 50);
-		
-		JButton club = new JButton("Club");
-		club.setBounds(50, 90, 200, 50);
-		
-		JButton embajada = new JButton("Embajada");
-		embajada.setBounds(50, 150, 200, 50);
-		
-		JButton banco = new JButton("Banco");
-		banco.setBounds(50, 210, 200, 50);
-		
-		panelLugares.add(biblioteca);
-		panelLugares.add(banco);
-		panelLugares.add(embajada);
-		panelLugares.add(club);
+		Label labelLugares= new Label("Lugares");
+		labelLugares.setBounds(50, 0, 200, 20);
+		panelLugares.add(labelLugares);
+
+		ArrayList<Lugar> lugares = this.modelo.obtenerLugaresDelPaisActual();
+		for( int i = 0; i < lugares.size(); i++ ) {
+			JButton bLugar = new JButton(lugares.get(i).getNombre());
+			bLugar.setBounds(50, 30+(60*i), 200, 50);
+			panelLugares.add(bLugar);
+		}
 		
 		//creo panel acciones
 		JPanel panelAcciones = new JPanel();

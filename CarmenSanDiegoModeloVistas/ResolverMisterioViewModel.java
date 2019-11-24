@@ -1,9 +1,12 @@
 package CarmenSanDiegoModeloVistas;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import CarmenSanDiego.src.Caso;
 import CarmenSanDiego.src.Detective;
+import CarmenSanDiego.src.Lugar;
+import CarmenSanDiego.src.Pais;
 
 public class ResolverMisterioViewModel {
 	private ArrayList<Caso> casos;
@@ -54,5 +57,13 @@ public class ResolverMisterioViewModel {
 		if( detective.getSospechosoEnOrden() == null ) return "";
 		
 		return detective.getSospechosoEnOrden().getNombre();
+	}
+	
+	public ArrayList<Lugar> obtenerLugaresDelPaisActual() {
+		return (ArrayList<Lugar>) detective.getPaisActual().getLugares();
+	}
+
+	public ArrayList<Pais> obtenerConexionesPaisActual() {
+		return (ArrayList<Pais>) detective.getPaisActual().getConexiones();
 	}
 }
