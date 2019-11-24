@@ -50,4 +50,9 @@ public class ResolverMisterioViewModel {
 		this.casoSeleccionado = casos.get(i);
 	}
 
+	public String obtenerNombreVillanoEnOrden() {
+		if( detective.getSospechosoEnOrden() == null ) return "";
+		
+		return detective.getSospechosoEnOrden().getNombre();
+	}
 }
