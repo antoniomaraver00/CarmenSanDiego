@@ -18,6 +18,7 @@ import java.awt.Label;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
@@ -109,14 +110,7 @@ public class ResolviendoCaso extends JFrame{
 		orden.setBounds(50, 50, 200, 50);
 		panelAcciones.add(orden);
 		
-		String nombreVillano ;
-		if(modelo.getDetective().getSospechosoEnOrden()==null) {
-			nombreVillano="";
-		}else {
-			nombreVillano = modelo.getDetective().getSospechosoEnOrden().getNombre();
-		}
-		
-		Label ordenEmitida = new Label("Orden emitida: "+nombreVillano);
+		Label ordenEmitida = new Label("Orden emitida: "+modelo.obtenerNombreVillanoEnOrden());
 		ordenEmitida.setBounds(50, 100, 250, 30);
 		panelAcciones.add(ordenEmitida);
 		
@@ -163,8 +157,8 @@ public class ResolviendoCaso extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Expedientes ventanaExpediente = new Expedientes(); 
-				ventanaExpediente.setVisible(true);
+				//Expedientes ventanaExpediente = new Expedientes(); 
+				//ventanaExpediente.setVisible(true);
 			}
 		});
 		
@@ -189,15 +183,14 @@ public class ResolviendoCaso extends JFrame{
 				if(modelo.getDetective().getSospechosoEnOrden()==null) {
 					OrdenDeArresto ventanaOrden = new OrdenDeArresto(modelo);
 					ventanaOrden.setVisible(true);
-					ventanaOrden.addWindowListener(new VentanaSeCierraListener() {
-
+					ventanaOrden.addWindowListener(new WindowAdapter() {
 						@Override
 						public void windowClosed(WindowEvent e) {
-							ordenEmitida.setText("Orden emitida: "+nombreVillano);
+							ordenEmitida.setText("Orden emitida: "+modelo.obtenerNombreVillanoEnOrden());
 						}
 					});
 				}else {
-					JOptionPane.showMessageDialog(contentPane, "ya genero orden,no se puede cambiar");
+					JOptionPane.showMessageDialog(contentPane, "Ya genero orden,no se puede cambiar");
 				}
 			}
 		});
