@@ -70,19 +70,25 @@ public class ResolviendoCaso extends JFrame{
 		panelLugares.setBounds(0, 50, 300, 280);
 		panelLugares.setLayout(null);
 		contentPane.add(panelLugares);
-			//etiqueta lugares
+		
+		//etiqueta lugares
 		Label lugares= new Label("Lugares");
 		lugares.setBounds(50, 0, 250, 30);
 		panelLugares.add(lugares);
-			//botones lugares
+		
+		//botones lugares
 		JButton biblioteca = new JButton("Biblioteca");
 		biblioteca.setBounds(50, 30, 200, 50);
+		
 		JButton club = new JButton("Club");
 		club.setBounds(50, 90, 200, 50);
+		
 		JButton embajada = new JButton("Embajada");
 		embajada.setBounds(50, 150, 200, 50);
+		
 		JButton banco = new JButton("Banco");
 		banco.setBounds(50, 210, 200, 50);
+		
 		panelLugares.add(biblioteca);
 		panelLugares.add(banco);
 		panelLugares.add(embajada);
@@ -93,24 +99,30 @@ public class ResolviendoCaso extends JFrame{
 		panelAcciones.setBounds(300, 50, 300, 280);
 		panelAcciones.setLayout(null);
 		contentPane.add(panelAcciones);
+		
 		Label acciones = new Label("Acciones");
 		acciones.setBounds(50, 0,250, 30);
 		panelAcciones.add(acciones);
+		
 		JButton orden = new JButton("Orden de arresto");
 		orden.setBounds(50, 50, 200, 50);
 		panelAcciones.add(orden);
+		
 		String nombreVillano ;
 		if(modelo.getDetective().getSospechosoEnOrden()==null) {
 			nombreVillano="";
 		}else {
 			nombreVillano = modelo.getDetective().getSospechosoEnOrden().getNombre();
 		}
+		
 		Label ordenEmitida = new Label("Orden emitida: "+nombreVillano);
 		ordenEmitida.setBounds(50, 100, 250, 30);
 		panelAcciones.add(ordenEmitida);
+		
 		JButton viajar = new JButton("Viajar");
 		viajar.setBounds(50, 140, 200, 50);
 		panelAcciones.add(viajar);
+		
 		JButton expedientes = new JButton("Expedientes");
 		expedientes.setBounds(50,210, 200, 50);
 		panelAcciones.add(expedientes);
@@ -120,11 +132,13 @@ public class ResolviendoCaso extends JFrame{
 		panelRecorridoCriminal.setBounds(0,330, 300, 250);
 		panelRecorridoCriminal.setLayout(null);
 		contentPane.add(panelRecorridoCriminal);
+		
 		Label recorrido = new Label("Recorrido por el criminal");
 		recorrido.setBounds(25, 0, 250, 30);
 		recorrido.setBackground(Color.gray);
 		recorrido.setAlignment(Label.CENTER);
 		panelRecorridoCriminal.add(recorrido);
+		
 		Label label1 = new Label("agregar paises");
 		label1.setBounds(25, 40, 200, 30);
 		panelRecorridoCriminal.add(label1);
@@ -134,7 +148,7 @@ public class ResolviendoCaso extends JFrame{
 		panelRecorridoFallido.setBounds(300,330, 300, 250);
 		panelRecorridoFallido.setLayout(null);
 		contentPane.add(panelRecorridoFallido);
-		Label recorridoFallido = new Label("Desino fallido");
+		Label recorridoFallido = new Label("Destino fallido");
 		recorridoFallido.setBounds(25, 0, 250, 30);
 		recorridoFallido.setBackground(Color.gray);
 		recorridoFallido.setAlignment(Label.CENTER);
