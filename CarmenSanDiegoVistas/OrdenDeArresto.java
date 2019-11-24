@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.sun.glass.events.WindowEvent;
+
 import CarmenSanDiego.src.Villano;
 import CarmenSanDiegoControladores.ControladorOrden;
 import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
@@ -63,6 +65,7 @@ public class OrdenDeArresto extends JFrame {
 		
 		ControladorOrden controlador = new ControladorOrden(modelo);
 		ArrayList<String> nombreVillanos= controlador.obtenerNombreVillanos(modelo);
+		
 		JComboBox villanos = new JComboBox();
 		for(int i=0; i<nombreVillanos.size(); i++) {
 			villanos.addItem(nombreVillanos.get(i));
