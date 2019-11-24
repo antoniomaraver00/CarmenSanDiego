@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 
 import com.sun.org.apache.regexp.internal.REDebugCompiler;
 
+import CarmenSanDiego.src.Caso;
+
 import java.awt.Label;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -28,7 +30,8 @@ import java.awt.Insets;
 
 public class ResolviendoCaso extends JFrame{
 	private JPanel contentPane;
-
+	private Caso caso;
+/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,9 +44,10 @@ public class ResolviendoCaso extends JFrame{
 			}
 		});
 	}
-	
-	public ResolviendoCaso() {
-		setTitle("Resolviendo caso"+"'nombre caso'");
+	*/
+	public ResolviendoCaso(Caso caso) {
+		this.caso = caso;
+		setTitle("Resolviendo robo: "+caso.getObjeto());
 		setSize(600, 600);
 		setLocationRelativeTo(null);
 		

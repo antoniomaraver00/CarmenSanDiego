@@ -89,7 +89,7 @@ public class ElegirCaso extends JFrame{
 		bAceptar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				ResolviendoCaso ventanaResolverCaso=new ResolviendoCaso();
+				ResolviendoCaso ventanaResolverCaso=new ResolviendoCaso(modelo.getCasoSeleccionado());
 				ventanaResolverCaso.setVisible(true);
 				setVisible(false);
 			}
