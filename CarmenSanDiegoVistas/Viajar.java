@@ -5,14 +5,21 @@ import java.awt.Color;
 import java.awt.EventQueue;
 
 import java.awt.Label;
+import java.util.List;
+
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import CarmenSanDiego.src.Pais;
+import CarmenSanDiegoControladores.ViajarController;
 import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
+
 import javax.swing.JList;
 
 public class Viajar extends JFrame {
@@ -46,8 +53,7 @@ public class Viajar extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		contentPane.setLayout(null);
+		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
 		setContentPane(contentPane);
 		setTitle("Viajar");
 		
@@ -59,6 +65,24 @@ public class Viajar extends JFrame {
 		destino.setBackground(Color.gray);
 		contentPane.add(destino);
 		
-	}
+		JList<Pais> listaDePaises = new JList<Pais>();
+		listaDePaises.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listaDePaises.setCellRenderer(new PaisCell());
+		listaDePaises.setModel(new ViajarController(modelo.obtenerConexionesPaisActual()).getPaises());
+		contentPane.add(listaDePaises);		
+		
+		listaDePaises.addListSelectionListener(new ListSelectionListener() {
 
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				Pais pais = listaDePaises.getSelectedValue();
+				if (pais != null) {
+					
+				}
+
+			}
+
+		});
+
+	}
 }
