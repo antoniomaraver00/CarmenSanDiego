@@ -10,14 +10,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import com.sun.org.apache.regexp.internal.REDebugCompiler;
-
 import CarmenSanDiego.src.Caso;
 import CarmenSanDiego.src.Detective;
+import CarmenSanDiego.src.GameOverException;
+import CarmenSanDiego.src.GameWonException;
 import CarmenSanDiego.src.Lugar;
 import CarmenSanDiego.src.Villano;
 import CarmenSanDiegoControladores.ResolviendoController;
-import CarmenSanDiegoModeloVistas.LugarViewModel;
 import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
 import CarmenSanDiegoVistas.VentanaSeCierraListener;
 
@@ -25,6 +24,8 @@ import java.awt.Label;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -44,7 +45,6 @@ import java.awt.Insets;
 public class ResolviendoCaso extends JFrame{
 	private JPanel contentPane;
 	private ResolverMisterioViewModel modelo;
-	private LugarViewModel modeloLugar;
 /*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -64,7 +64,6 @@ public class ResolviendoCaso extends JFrame{
 		setTitle("Resolviendo robo: "+modelo.getCasoSeleccionado().getObjeto());
 		setSize(600, 600);
 		setLocationRelativeTo(null);
-		
 		//panel principal
 		contentPane = new JPanel();
 	    contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -94,15 +93,21 @@ public class ResolviendoCaso extends JFrame{
 		listaDeLugares.setBounds(50, 30, 200, 240);
 		panelLugares.add(listaDeLugares);
 		
-		listaDeLugares.addListSelectionListener(new ListSelectionListener() {
-
+		listaDeLugares.addMouseListener(new MouseAdapter(){
 			@Override
-			public void valueChanged(ListSelectionEvent e) {
+			public void mouseClicked(MouseEvent e) {
 				Lugar lugar = listaDeLugares.getSelectedValue();
-				if (lugar != null) {
-					modeloLugar.getLugarSeleccionado().getNombre();
-					System.out.println(modeloLugar.getLugarSeleccionado().getNombre());
-				//se debe implementar funcionabilidad de lista de lugares
+				if(lugar != null) {
+					try {
+						VisitarLugar visitarLugar = new VisitarLugar(modelo.getCasoSeleccionado(), modelo.getDetective(), lugar);
+						visitarLugar.setVisible(true);
+					} catch( GameOverException e1 ) {
+						JOptionPane.showMessageDialog(null, "Perdio: "+e1.toString());
+						
+					} catch( GameWonException e2 ) {
+						JOptionPane.showMessageDialog(null, "Gano, atrapo al malechor: "+e2.toString());
+						
+					}
 				}
 			}
 		});
