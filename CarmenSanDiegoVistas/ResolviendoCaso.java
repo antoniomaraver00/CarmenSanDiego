@@ -1,10 +1,14 @@
 package CarmenSanDiegoVistas;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import com.sun.org.apache.regexp.internal.REDebugCompiler;
 
@@ -12,6 +16,7 @@ import CarmenSanDiego.src.Caso;
 import CarmenSanDiego.src.Detective;
 import CarmenSanDiego.src.Lugar;
 import CarmenSanDiego.src.Villano;
+import CarmenSanDiegoControladores.ResolviendoController;
 import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
 import CarmenSanDiegoVistas.VentanaSeCierraListener;
 
@@ -65,9 +70,9 @@ public class ResolviendoCaso extends JFrame{
 		contentPane.setLayout(null);
 		
 		//etiqueta donde se encuentra
-		Label label = new Label("Estan en "+modelo.getDetective().getPaisActual().getNombre());
-		label.setBounds(50, 0, 400, 50);
-		contentPane.add(label);
+		Label labelPaisActual = new Label("Estan en "+modelo.obtenerNombrePaisActual());
+		labelPaisActual.setBounds(50, 0, 400, 50);
+		contentPane.add(labelPaisActual);
 		
 		//creo panel lugares
 		JPanel panelLugares = new JPanel();
@@ -79,13 +84,24 @@ public class ResolviendoCaso extends JFrame{
 		Label labelLugares= new Label("Lugares");
 		labelLugares.setBounds(50, 0, 200, 20);
 		panelLugares.add(labelLugares);
+		
+		JList<Lugar> listaDeLugares = new JList<Lugar>();
+		listaDeLugares.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listaDeLugares.setCellRenderer(new LugarCell());
+		listaDeLugares.setModel(new ResolviendoController(modelo).getLugares());
+		listaDeLugares.setBounds(50, 30, 200, 240);
+		panelLugares.add(listaDeLugares);
+		
+		listaDeLugares.addListSelectionListener(new ListSelectionListener() {
 
-		ArrayList<Lugar> lugares = this.modelo.obtenerLugaresDelPaisActual();
-		for( int i = 0; i < lugares.size(); i++ ) {
-			JButton bLugar = new JButton(lugares.get(i).getNombre());
-			bLugar.setBounds(50, 30+(60*i), 200, 50);
-			panelLugares.add(bLugar);
-		}
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				Lugar lugar = listaDeLugares.getSelectedValue();
+				if (lugar != null) {
+					System.out.println("LUGAR TOCADO");
+				}
+			}
+		});
 		
 		//creo panel acciones
 		JPanel panelAcciones = new JPanel();
@@ -161,6 +177,12 @@ public class ResolviendoCaso extends JFrame{
 				Viajar ventanaViajar = new Viajar(modelo);
 				ventanaViajar.setVisible(true);
 				
+				ventanaViajar.addWindowListener(new WindowAdapter() {
+					@Override
+					public void windowClosed(WindowEvent e) {
+						actualizarLugaresYLabelPaisActual(listaDeLugares, labelPaisActual);
+					}
+				});
 			}
 		});
 		
@@ -185,5 +207,10 @@ public class ResolviendoCaso extends JFrame{
 				}
 			}
 		});
+	}
+	
+	private void actualizarLugaresYLabelPaisActual(JList<Lugar> listaDeLugares, Label labelPaisActual) {
+		listaDeLugares.setModel(new ResolviendoController(modelo).getLugares());
+		labelPaisActual.setText("Estan en "+modelo.obtenerNombrePaisActual());
 	}
 }
