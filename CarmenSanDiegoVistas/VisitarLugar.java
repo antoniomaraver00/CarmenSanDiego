@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 
 import java.awt.Label;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BoxLayout;
@@ -17,9 +18,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import CarmenSanDiego.src.Caso;
+import CarmenSanDiego.src.Detective;
+import CarmenSanDiego.src.Lugar;
 import CarmenSanDiego.src.Pais;
 import CarmenSanDiegoControladores.ViajarController;
 import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
+import CarmenSanDiegoModeloVistas.VisitarLugarViewModel;
 
 import javax.swing.JList;
 
@@ -33,8 +38,7 @@ import java.awt.event.ActionEvent;
 
 public class VisitarLugar extends JFrame{
 	private JPanel contentPane;
-	private ResolverMisterioViewModel modelo;
-	private LugarViewModel modeloLugar;
+	private VisitarLugarViewModel modelo;
 
 	/**
 	 * Launch the application.
@@ -55,28 +59,33 @@ public class VisitarLugar extends JFrame{
 	/**
 	 * Create the frame.
 	 */
-	public VisitarLugar(ResolverMisterioViewModel modelo) {
+	public VisitarLugar(Caso caso, Detective detective, Lugar lugar) {
 		setBounds(100, 100, 450, 300);
-		this.modelo = modelo;
+		this.modelo = new VisitarLugarViewModel(caso, detective, lugar);
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(3, 2, 0, 0));
 		
-		JLabel lblLugarVisitado= new JLabel("Estas visitando:" +modeloLugar.getLugarSeleccionado().getNombre());
+		JLabel lblLugarVisitado= new JLabel("Estas visitando:" +modelo.obtenerNombreLugarSeleccionado());
 		contentPane.add(lblLugarVisitado);
 		
-		JLabel lblPista = new JLabel("Aca van las variantes de las pistas");
-		contentPane.add(lblPista);
+		ArrayList<String> pistas = modelo.obtenerPistas();
+		
+		for( String pista : pistas ) {
+			JLabel lblPista = new JLabel(pista);
+			contentPane.add(lblPista);
+		}
 		
 		JButton btnContinuar = new JButton("Continuar");
 		btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 			}
 		});
 		contentPane.add(btnContinuar);
-		setTitle("Resolviendo: "+modelo.getCasoSeleccionado().getObjeto());
+		setTitle("Resolviendo: "+modelo.obtenerNombreObjetoRobado());
 		
 		
 	}
