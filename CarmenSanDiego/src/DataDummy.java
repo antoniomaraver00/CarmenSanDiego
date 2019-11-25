@@ -83,56 +83,51 @@ public class DataDummy {
 	public ArrayList<Pais> crearListaPaises() {
 		ArrayList<Pais> paises = new ArrayList<Pais>();
 		
-		ArrayList<String> caractArg = new ArrayList<String>() {
-			String a = "Toman mate";
-			String b = "Juegan al futbol";
-			String c = "La bandera es color blanco y celeste";
-		};
+		ArrayList<String> caractArg = new ArrayList<String>();
+		caractArg.add("Toman mate");
+		caractArg.add("Juegan al futbol");
+		caractArg.add("La bandera es color blanco y celeste");
 		
 		Pais argentina = new Pais("Argentina", caractArg, new ArrayList<Lugar>());
 		agregarLugares(argentina);
 		
-		ArrayList<String> caractPeru = new ArrayList<String>() {
-			String a = "La bandera es roja y blanca";
-			String b = "En su pais se encuentran las ruinas del Machu Picchu";
-			String c = "Su capital es Lima";
-		};
+		ArrayList<String> caractPeru = new ArrayList<String>();
+		caractPeru.add("La bandera es roja y blanca");
+		caractPeru.add("En su pais se encuentran las ruinas del Machu Picchu");
+		caractPeru.add("Su capital es Lima");
 		
 		Pais peru = new Pais("Peru", caractPeru, new ArrayList<Lugar>());
 		agregarLugares(peru);
 		
-		ArrayList<String> caractUruguay = new ArrayList<String>() {
-			String a = "A su seleccion de futbol le dicen la garra charrua";
-			String b = "Su bandera es blanca y celeste";
-			String c = "Toman mate";
-		};
+		
+		ArrayList<String> caractUruguay = new ArrayList<String>();
+		caractUruguay.add("A su seleccion de futbol le dicen la garra charrua");
+		caractUruguay.add("Su bandera es blanca y celeste");
+		caractUruguay.add("Toman mate");
 		
 		Pais uruguay = new Pais("Uruguay", caractUruguay, new ArrayList<Lugar>());
 		agregarLugares(uruguay);
 		
-		ArrayList<String> caractEspania = new ArrayList<String>() {
-			String a = "Su bandera es de color amarilla y roja";
-			String b = "Un festival principal es el de San Fermin";
-			String c = "Su capital es Madrid";
-		};
+		ArrayList<String> caractEspania = new ArrayList<String>();
+		caractEspania.add("Su bandera es de color amarilla y roja");
+		caractEspania.add("Un festival principal es el de San Fermin");
+		caractEspania.add("Su capital es Madrid");
 		
 		Pais espania = new Pais("Espania", caractEspania, new ArrayList<Lugar>());
 		agregarLugares(espania);
 		
-		ArrayList<String> caractFrancia = new ArrayList<String>() {
-			String a = "Su bandera es azul, blanca y roja";
-			String b = "Inventaron la baguette";
-			String c = "En el pais se encuentra la torre Eiffel";
-		};
+		ArrayList<String> caractFrancia = new ArrayList<String>();
+		caractFrancia.add("Su bandera es azul, blanca y roja");
+		caractFrancia.add("Inventaron la baguette");
+		caractFrancia.add("En el pais se encuentra la torre Eiffel");
 		
 		Pais francia = new Pais("Francia", caractFrancia, new ArrayList<Lugar>());
 		agregarLugares(francia);
 		
-		ArrayList<String> caractInglaterra = new ArrayList<String>() {
-			String a = "Inventaron el futbol";
-			String b = "Su bandera es roja y blanca";
-			String c = "Es uno de los paises del Reino Unido";
-		};
+		ArrayList<String> caractInglaterra = new ArrayList<String>();
+		caractInglaterra.add("Inventaron el futbol");
+		caractInglaterra.add("Su bandera es roja y blanca");
+		caractInglaterra.add("Es uno de los paises del Reino Unido");
 		
 		Pais inglaterra = new Pais("Inglaterra", caractInglaterra, new ArrayList<Lugar>());
 		agregarLugares(inglaterra);
