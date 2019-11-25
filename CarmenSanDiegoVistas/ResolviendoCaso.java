@@ -164,8 +164,8 @@ public class ResolviendoCaso extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//Expedientes ventanaExpediente = new Expedientes(); 
-				//ventanaExpediente.setVisible(true);
+				Expedientes ventanaExpediente = new Expedientes(modelo.getCasoSeleccionado().getSospechosos()); 
+				ventanaExpediente.setVisible(true);
 			}
 		});
 		
