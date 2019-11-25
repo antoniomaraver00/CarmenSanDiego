@@ -150,7 +150,7 @@ public class DataDummy {
 	public void agregarLugares(Pais pais) {
 		Banco banco = new Banco("Banco", pais);
 		Biblioteca bib = new Biblioteca("Biblioteca", pais);
-		Embajada emb = new Embajada("embajada", pais);
+		Embajada emb = new Embajada("Embajada", pais);
 		Club club = new Club("Club", pais);
 				
 		pais.agregarLugar(banco);
