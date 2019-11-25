@@ -17,6 +17,7 @@ import CarmenSanDiego.src.Detective;
 import CarmenSanDiego.src.Lugar;
 import CarmenSanDiego.src.Villano;
 import CarmenSanDiegoControladores.ResolviendoController;
+import CarmenSanDiegoModeloVistas.LugarViewModel;
 import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
 import CarmenSanDiegoVistas.VentanaSeCierraListener;
 
@@ -43,6 +44,7 @@ import java.awt.Insets;
 public class ResolviendoCaso extends JFrame{
 	private JPanel contentPane;
 	private ResolverMisterioViewModel modelo;
+	private LugarViewModel modeloLugar;
 /*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -98,7 +100,9 @@ public class ResolviendoCaso extends JFrame{
 			public void valueChanged(ListSelectionEvent e) {
 				Lugar lugar = listaDeLugares.getSelectedValue();
 				if (lugar != null) {
-					System.out.println("LUGAR TOCADO");
+					modeloLugar.getLugarSeleccionado().getNombre();
+					System.out.println(modeloLugar.getLugarSeleccionado().getNombre());
+				//se debe implementar funcionabilidad de lista de lugares
 				}
 			}
 		});
@@ -208,6 +212,8 @@ public class ResolviendoCaso extends JFrame{
 			}
 		});
 	}
+	
+		
 	
 	private void actualizarLugaresYLabelPaisActual(JList<Lugar> listaDeLugares, Label labelPaisActual) {
 		listaDeLugares.setModel(new ResolviendoController(modelo).getLugares());
