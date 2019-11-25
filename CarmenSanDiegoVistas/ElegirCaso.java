@@ -10,10 +10,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import CarmenSanDiego.src.DataDummy;
+import CarmenSanDiego.src.GameOverException;
+import CarmenSanDiego.src.GameWonException;
 import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
 
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
