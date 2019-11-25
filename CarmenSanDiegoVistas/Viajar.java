@@ -21,6 +21,7 @@ import CarmenSanDiegoControladores.ViajarController;
 import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 public class Viajar extends JFrame {
 
@@ -77,7 +78,12 @@ public class Viajar extends JFrame {
 			public void valueChanged(ListSelectionEvent e) {
 				Pais pais = listaDePaises.getSelectedValue();
 				if (pais != null) {
-					
+					String mensaje = "Desea viajar a "+pais.getNombre()+"?";
+					int confirmacion = JOptionPane.showConfirmDialog(null, mensaje, "Confirmar viaje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+					if(confirmacion == JOptionPane.YES_OPTION) {
+						modelo.getDetective().viajar(pais);
+						dispose();
+					}
 				}
 
 			}
