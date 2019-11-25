@@ -10,8 +10,9 @@ import CarmenSanDiegoModeloVistas.ExpedientesViewModel;
 public class ExpedientesController {
 
 	private ExpedientesViewModel modelo;
-
-	public ArrayList<Villano> getVillanos() {
-		return modelo.getVillanos();
+	
+	public ExpedientesViewModel getModelo()
+	{
+		return modelo;
 	}
 }

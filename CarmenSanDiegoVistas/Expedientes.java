@@ -8,7 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import CarmenSanDiego.src.Villano;
 import CarmenSanDiegoControladores.ExpedientesController;
@@ -60,9 +61,26 @@ public class Expedientes extends JFrame {
 		JList <Villano> listaVillanos = new JList<Villano>();
 		listaVillanos.setBounds(10, 53, 173, 183);
 		listaVillanos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listaVillanos.setModel((ListModel<Villano>) controller.getVillanos());
+		listaVillanos.setModel((ListModel<Villano>) controller.getModelo().getVillanos());
 		contentPane.add(listaVillanos);
 		
+		listaVillanos.addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				Villano villano = listaVillanos.getSelectedValue();
+				if (villano != null) {
+					seSelecciono(villano);
+				}
+
+			}
+
+			private void seSelecciono(Villano villano) {
+				controller.getModelo().setVillanoSeleccionado(villano);
+			}
+
+		});
+	
 		JLabel lblVillanos = new JLabel("VILLANOS");
 		lblVillanos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVillanos.setFont(new Font("Times New Roman", Font.PLAIN, 16));
