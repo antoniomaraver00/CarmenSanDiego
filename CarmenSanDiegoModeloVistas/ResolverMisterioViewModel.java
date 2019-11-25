@@ -66,4 +66,8 @@ public class ResolverMisterioViewModel {
 	public ArrayList<Pais> obtenerConexionesPaisActual() {
 		return (ArrayList<Pais>) detective.getPaisActual().getConexiones();
 	}
+	
+	public String obtenerNombrePaisActual() {
+		return detective.getPaisActual().getNombre();
+	}
 }
