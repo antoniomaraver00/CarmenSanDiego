@@ -1,5 +1,6 @@
 package CarmenSanDiegoVistas;
 
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -7,8 +8,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+
+import CarmenSanDiego.src.Villano;
+import CarmenSanDiegoControladores.ExpedientesController;
+
 import javax.swing.JScrollPane;
+import javax.swing.ListModel;
+import javax.swing.ListSelectionModel;
 import javax.swing.JLabel;
+import javax.swing.JList;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +28,7 @@ import javax.swing.SwingConstants;
 public class Expedientes extends JFrame {
 
 	private JPanel contentPane;
+	private ExpedientesController controller;
 
 	/**
 	 * Launch the application.
@@ -46,9 +57,11 @@ public class Expedientes extends JFrame {
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		
-		JScrollPane scrollPaneVillanos = new JScrollPane();
-		scrollPaneVillanos.setBounds(10, 53, 173, 183);
-		contentPane.add(scrollPaneVillanos);
+		JList <Villano> listaVillanos = new JList<Villano>();
+		listaVillanos.setBounds(10, 53, 173, 183);
+		listaVillanos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listaVillanos.setModel((ListModel<Villano>) controller.getVillanos());
+		contentPane.add(listaVillanos);
 		
 		JLabel lblVillanos = new JLabel("VILLANOS");
 		lblVillanos.setHorizontalAlignment(SwingConstants.CENTER);
