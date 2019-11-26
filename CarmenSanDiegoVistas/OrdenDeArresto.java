@@ -13,6 +13,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -36,7 +37,7 @@ public class OrdenDeArresto extends JFrame {
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		
-		Label label = new Label("Seleccione villano contra quien emitira la orden");
+		JLabel label = new JLabel("Seleccione villano contra quien emitira la orden");
 		label.setBounds(50, 0, 400, 50);
 		contentPane.add(label);
 		
@@ -79,6 +80,4 @@ public class OrdenDeArresto extends JFrame {
 			}
 		});
 	}
-	
-	
 }
