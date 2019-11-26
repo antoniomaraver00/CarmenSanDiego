@@ -115,7 +115,7 @@ public class Expedientes extends JFrame {
 		scrollPaneHobbies.setBounds(220, 225, 183, 100);
 		rightPane.add(scrollPaneHobbies);
 		
-		JButton bAtras = new JButton("Atras");
+		JButton bAtras = new JButton("Atras.");
 		bAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
