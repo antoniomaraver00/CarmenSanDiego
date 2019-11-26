@@ -18,17 +18,12 @@ import javax.swing.border.EmptyBorder;
 import com.sun.glass.events.WindowEvent;
 
 import CarmenSanDiego.src.Villano;
-import CarmenSanDiegoControladores.ControladorOrden;
-import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
-import CarmenSanDiegoVistas.OrdenDeArresto.obtenerNombreVillanos;
+import CarmenSanDiegoControladores.OrdenControlador;
+import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
+import CarmenSanDiegoModeloVistas.ResolviendoCasoViewModel;
 
 public class OrdenDeArresto extends JFrame {
-
-	public class obtenerNombreVillanos extends ArrayList<String> {
-
-	}
-
-	ResolverMisterioViewModel modelo;
+	ResolviendoCasoViewModel modelo;
 	private JPanel contentPane;
 
 	/**
@@ -51,8 +46,8 @@ public class OrdenDeArresto extends JFrame {
 	 * Create the frame.
 	 * @param modelo 
 	 */
-	public OrdenDeArresto(ResolverMisterioViewModel modelo) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public OrdenDeArresto(ResolviendoCasoViewModel modelo) {
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 230);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -63,8 +58,8 @@ public class OrdenDeArresto extends JFrame {
 		label.setBounds(50, 0, 400, 50);
 		contentPane.add(label);
 		
-		ControladorOrden controlador = new ControladorOrden(modelo);
-		ArrayList<String> nombreVillanos= controlador.obtenerNombreVillanos(modelo);
+		OrdenControlador controlador = new OrdenControlador(modelo);
+		ArrayList<String> nombreVillanos= controlador.obtenerNombreVillanos();
 		
 		JComboBox villanos = new JComboBox();
 		for(int i=0; i<nombreVillanos.size(); i++) {
