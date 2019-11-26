@@ -89,7 +89,6 @@ public class Viajar extends JFrame {
 				}
 
 			}
-
 		});
 
 	}
