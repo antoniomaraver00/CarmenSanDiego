@@ -3,27 +3,22 @@ package CarmenSanDiegoModeloVistas;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
+
 import CarmenSanDiego.src.Caso;
 import CarmenSanDiego.src.Detective;
 import CarmenSanDiego.src.Lugar;
 import CarmenSanDiego.src.Pais;
 
-public class ResolverMisterioViewModel {
+public class ElegirCasoViewModel {
 	private ArrayList<Caso> casos;
 	private Caso casoSeleccionado;
-	private Detective detective;
+	private String nombreDetective;
 	
-	
-	
-	public Detective getDetective() {
-		return detective;
+	public ElegirCasoViewModel(String nombreDetective) {
+		this.nombreDetective = nombreDetective;
 	}
-
-	public void crearDetective(String nombre) {
-		detective = new Detective(casoSeleccionado.getPaisInicio());
-		detective.setNombre(nombre);
-	}
-
+	
 	public ArrayList<Caso> getCasos() {
 		return casos;
 	}
@@ -50,24 +45,11 @@ public class ResolverMisterioViewModel {
 		int i = this.casos.indexOf(casoSeleccionado);
 		if(++i >= casos.size()) i = 0;
 		
-		this.casoSeleccionado = casos.get(i);
+		setCasoSeleccionado(casos.get(i));
 	}
 
-	public String obtenerNombreVillanoEnOrden() {
-		if( detective.getSospechosoEnOrden() == null ) return "";
-		
-		return detective.getSospechosoEnOrden().getNombre();
-	}
-	
-	public ArrayList<Lugar> obtenerLugaresDelPaisActual() {
-		return (ArrayList<Lugar>) detective.getPaisActual().getLugares();
+	public String getNombreDetective() {
+		return nombreDetective;
 	}
 
-	public ArrayList<Pais> obtenerConexionesPaisActual() {
-		return (ArrayList<Pais>) detective.getPaisActual().getConexiones();
-	}
-	
-	public String obtenerNombrePaisActual() {
-		return detective.getPaisActual().getNombre();
-	}
 }
