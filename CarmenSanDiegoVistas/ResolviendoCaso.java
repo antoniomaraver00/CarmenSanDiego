@@ -16,8 +16,9 @@ import CarmenSanDiego.src.GameOverException;
 import CarmenSanDiego.src.GameWonException;
 import CarmenSanDiego.src.Lugar;
 import CarmenSanDiego.src.Villano;
-import CarmenSanDiegoControladores.ResolviendoController;
-import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
+import CarmenSanDiegoControladores.ResolviendoCasoController;
+import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
+import CarmenSanDiegoModeloVistas.ResolviendoCasoViewModel;
 import CarmenSanDiegoVistas.VentanaSeCierraListener;
 
 import java.awt.Label;
@@ -44,7 +45,7 @@ import java.awt.Insets;
 
 public class ResolviendoCaso extends JFrame{
 	private JPanel contentPane;
-	private ResolverMisterioViewModel modelo;
+	private ResolviendoCasoViewModel modelo;
 /*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -59,9 +60,9 @@ public class ResolviendoCaso extends JFrame{
 		});
 	}
 	*/
-	public ResolviendoCaso(ResolverMisterioViewModel modelo) {
-		this.modelo = modelo;
-		setTitle("Resolviendo robo: "+modelo.getCasoSeleccionado().getObjeto());
+	public ResolviendoCaso(Caso caso, String nombreDetective, JFrame previousFrame) {
+		this.modelo = new ResolviendoCasoViewModel(caso, nombreDetective, previousFrame);
+		setTitle("Resolviendo robo: "+modelo.obtenerCaso().getObjeto());
 		setSize(600, 600);
 		setLocationRelativeTo(null);
 		//panel principal
@@ -89,7 +90,7 @@ public class ResolviendoCaso extends JFrame{
 		JList<Lugar> listaDeLugares = new JList<Lugar>();
 		listaDeLugares.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listaDeLugares.setCellRenderer(new LugarCell());
-		listaDeLugares.setModel(new ResolviendoController(modelo).getLugares());
+		listaDeLugares.setModel(new ResolviendoCasoController(modelo).getLugares());
 		listaDeLugares.setBounds(50, 30, 200, 240);
 		panelLugares.add(listaDeLugares);
 		
@@ -99,14 +100,16 @@ public class ResolviendoCaso extends JFrame{
 				Lugar lugar = listaDeLugares.getSelectedValue();
 				if(lugar != null) {
 					try {
-						VisitarLugar visitarLugar = new VisitarLugar(modelo.getCasoSeleccionado(), modelo.getDetective(), lugar);
+						VisitarLugar visitarLugar = new VisitarLugar(modelo.obtenerCaso(), modelo.obtenerDetective(), lugar);
 						visitarLugar.setVisible(true);
 					} catch( GameOverException e1 ) {
 						JOptionPane.showMessageDialog(null, "Perdio: "+e1.toString());
-						
+						dispose();
+						modelo.obtenerPreviousFrame().setVisible(true);
 					} catch( GameWonException e2 ) {
 						JOptionPane.showMessageDialog(null, "Gano, atrapo al malechor: "+e2.toString());
-						
+						dispose();
+						modelo.obtenerPreviousFrame().setVisible(true);
 					}
 				}
 			}
@@ -183,7 +186,7 @@ public class ResolviendoCaso extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Viajar ventanaViajar = new Viajar(modelo);
+				Viajar ventanaViajar = new Viajar(modelo.obtenerDetective());
 				ventanaViajar.setVisible(true);
 				
 				ventanaViajar.addWindowListener(new WindowAdapter() {
@@ -202,7 +205,7 @@ public class ResolviendoCaso extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(modelo.getDetective().getSospechosoEnOrden()==null) {
+				if(modelo.obtenerDetective().getSospechosoEnOrden()==null) {
 					OrdenDeArresto ventanaOrden = new OrdenDeArresto(modelo);
 					ventanaOrden.setVisible(true);
 					ventanaOrden.addWindowListener(new WindowAdapter() {
@@ -221,7 +224,7 @@ public class ResolviendoCaso extends JFrame{
 		
 	
 	private void actualizarLugaresYLabelPaisActual(JList<Lugar> listaDeLugares, Label labelPaisActual) {
-		listaDeLugares.setModel(new ResolviendoController(modelo).getLugares());
+		listaDeLugares.setModel(new ResolviendoCasoController(modelo).getLugares());
 		labelPaisActual.setText("Estan en "+modelo.obtenerNombrePaisActual());
 	}
 }
