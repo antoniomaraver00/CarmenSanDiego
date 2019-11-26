@@ -8,7 +8,7 @@ import javax.swing.ListCellRenderer;
 
 import CarmenSanDiego.src.Lugar;
 
-public class LugarCell  extends JButton implements ListCellRenderer<Lugar> {
+public class LugarCell extends JButton implements ListCellRenderer<Lugar> {
 
 	/**
 	 * 

@@ -4,12 +4,13 @@ import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 
 import CarmenSanDiego.src.Lugar;
-import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
+import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
+import CarmenSanDiegoModeloVistas.ResolviendoCasoViewModel;
 
-public class ResolviendoController {
-	ResolverMisterioViewModel modelo;
+public class ResolviendoCasoController {
+	ResolviendoCasoViewModel modelo;
 	
-	public ResolviendoController(ResolverMisterioViewModel modelo) {
+	public ResolviendoCasoController(ResolviendoCasoViewModel modelo) {
 		this.modelo = modelo;
 	}
 	

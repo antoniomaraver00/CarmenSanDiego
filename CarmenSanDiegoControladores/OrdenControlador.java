@@ -4,27 +4,30 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import CarmenSanDiego.src.Villano;
-import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
+import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
+import CarmenSanDiegoModeloVistas.OrdenViewModel;
+import CarmenSanDiegoModeloVistas.ResolviendoCasoViewModel;
+import CarmenSanDiegoVistas.ResolviendoCaso;
 
 
-public class ControladorOrden {
+public class OrdenControlador {
 	Hashtable<String, Villano> dicVillanos;
-	ResolverMisterioViewModel modelo;
+	OrdenViewModel modelo;
 	
-	public ControladorOrden(ResolverMisterioViewModel modelo) {
+	public OrdenControlador(OrdenViewModel modelo) {
 		this.modelo = modelo;
 		dicVillanos = new Hashtable<String, Villano>();
 		ArrayList<Villano> listaVillanos = new ArrayList<Villano>();
-		listaVillanos.addAll(modelo.getCasoSeleccionado().getSospechosos());
+		listaVillanos.addAll(modelo.obtenerSospechosos());
 		for(int i=0;i<listaVillanos.size();i++) {
 			dicVillanos.put(listaVillanos.get(i).getNombre(), listaVillanos.get(i));
 		}
 	}
 
-	public ArrayList<String> obtenerNombreVillanos(ResolverMisterioViewModel modelo){
+	public ArrayList<String> obtenerNombreVillanos(){
 		ArrayList<String> nombreVillanos = new ArrayList<String>();
 		ArrayList<Villano> listaVillanos = new ArrayList<Villano>();
-		listaVillanos.addAll(modelo.getCasoSeleccionado().getSospechosos());
+		listaVillanos.addAll(modelo.obtenerSospechosos());
 		for(int i=0;i<listaVillanos.size();i++) {
 			nombreVillanos.add(listaVillanos.get(i).getNombre());
 		}
@@ -33,8 +36,6 @@ public class ControladorOrden {
 	
 	public void generarOrden(String nombreVillano) {
 		Villano villano = dicVillanos.get(nombreVillano);
-		modelo.getDetective().generarOrden(villano);
+		modelo.obtenerDetective().generarOrden(villano);
 	}
-	
-
 }

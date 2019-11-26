@@ -64,5 +64,9 @@ public class Villano {
 	public ArrayList<String> getSenias() {
 		return senias;
 	}
+	
+	public String toString(){
+		return this.getNombre();
+	}
 
 }

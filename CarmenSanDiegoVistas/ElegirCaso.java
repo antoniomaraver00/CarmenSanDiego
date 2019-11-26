@@ -1,5 +1,6 @@
 package CarmenSanDiegoVistas;
 
+import java.awt.AWTEvent;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -10,10 +11,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import CarmenSanDiego.src.DataDummy;
-import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
+import CarmenSanDiego.src.GameOverException;
+import CarmenSanDiego.src.GameWonException;
+import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
 
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -26,12 +31,14 @@ import java.awt.CardLayout;
 
 
 public class ElegirCaso extends JFrame{
-	private ResolverMisterioViewModel modelo;
+	private ElegirCasoViewModel modelo;
 	private JPanel contentPane;		
 	private JLabel frase;
 	private JLabel descripcion;
+	private JFrame elegirCasoFrame;
 	
 	public ElegirCaso(String nombre) {
+		elegirCasoFrame = this;
 		crearModelo(nombre);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 500, 580, 600);
@@ -89,24 +96,23 @@ public class ElegirCaso extends JFrame{
 		bAceptar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				ResolviendoCaso ventanaResolverCaso=new ResolviendoCaso(modelo);
-				ventanaResolverCaso.setVisible(true);
+				ResolviendoCaso ventanaResolverCaso=new ResolviendoCaso(modelo.getCasoSeleccionado(), modelo.getNombreDetective(), elegirCasoFrame);
 				setVisible(false);
-			}
+				ventanaResolverCaso.setVisible(true);
+							}
 		});
 		bAceptar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panelBotones.add(bAceptar);
 		
 		
-}
-
+		
+	}
 
 	private void crearModelo(String nombre) {
-		modelo = new ResolverMisterioViewModel();
+		modelo = new ElegirCasoViewModel(nombre);
 		DataDummy data = new DataDummy();
 		modelo.setCasos(data.crearCasos());
 		modelo.setCasoSeleccionadoRandom();
-		modelo.crearDetective(nombre);
 	}
 	
 }

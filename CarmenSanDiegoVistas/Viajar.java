@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 
 import java.awt.Label;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BoxLayout;
@@ -16,9 +17,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import CarmenSanDiego.src.Detective;
 import CarmenSanDiego.src.Pais;
 import CarmenSanDiegoControladores.ViajarController;
-import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
+import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -26,7 +28,7 @@ import javax.swing.JOptionPane;
 public class Viajar extends JFrame {
 
 	private JPanel contentPane;
-	private ResolverMisterioViewModel modelo;
+	private Detective detective;
 
 	/**
 	 * Launch the application.
@@ -47,8 +49,8 @@ public class Viajar extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Viajar(ResolverMisterioViewModel modelo) {
-		this.modelo = modelo;
+	public Viajar(Detective detective) {
+		this.detective = detective;
 		
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -58,7 +60,7 @@ public class Viajar extends JFrame {
 		setContentPane(contentPane);
 		setTitle("Viajar");
 		
-		Label pais = new Label("Estan en: "+modelo.getDetective().getPaisActual().getNombre());
+		Label pais = new Label("Estan en: "+detective.getPaisActual().getNombre());
 		pais.setBounds(50, 0, 300, 50);
 		contentPane.add(pais);
 		Label destino = new Label("Posibles Destinos");
@@ -69,7 +71,7 @@ public class Viajar extends JFrame {
 		JList<Pais> listaDePaises = new JList<Pais>();
 		listaDePaises.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listaDePaises.setCellRenderer(new PaisCell());
-		listaDePaises.setModel(new ViajarController(modelo.obtenerConexionesPaisActual()).getPaises());
+		listaDePaises.setModel(new ViajarController(obtenerConexionesPaisActual()).getPaises());
 		contentPane.add(listaDePaises);		
 		
 		listaDePaises.addListSelectionListener(new ListSelectionListener() {
@@ -81,7 +83,7 @@ public class Viajar extends JFrame {
 					String mensaje = "Desea viajar a "+pais.getNombre()+"?";
 					int confirmacion = JOptionPane.showConfirmDialog(null, mensaje, "Confirmar viaje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 					if(confirmacion == JOptionPane.YES_OPTION) {
-						modelo.getDetective().viajar(pais);
+						detective.viajar(pais);
 						dispose();
 					}
 				}
@@ -90,5 +92,13 @@ public class Viajar extends JFrame {
 
 		});
 
+	}
+	
+	public ArrayList<Pais> obtenerConexionesPaisActual() {
+		List<Pais> paises;
+		
+		paises = detective.getPaisActual().getConexiones();
+		
+		return (ArrayList<Pais>)paises;
 	}
 }
