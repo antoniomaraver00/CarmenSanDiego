@@ -23,12 +23,12 @@ import CarmenSanDiego.src.Detective;
 import CarmenSanDiego.src.Lugar;
 import CarmenSanDiego.src.Pais;
 import CarmenSanDiegoControladores.ViajarController;
-import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
+import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
 import CarmenSanDiegoModeloVistas.VisitarLugarViewModel;
 
 import javax.swing.JList;
 
-import CarmenSanDiegoModeloVistas.ResolverMisterioViewModel;
+import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
 import javax.swing.JLabel;
 import java.awt.GridLayout;
 import javax.swing.JButton;
