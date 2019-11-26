@@ -1,6 +1,7 @@
 package CarmenSanDiegoVistas;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -15,13 +16,13 @@ import CarmenSanDiego.src.Detective;
 import CarmenSanDiego.src.GameOverException;
 import CarmenSanDiego.src.GameWonException;
 import CarmenSanDiego.src.Lugar;
+import CarmenSanDiego.src.Pais;
 import CarmenSanDiego.src.Villano;
 import CarmenSanDiegoControladores.ResolviendoCasoController;
 import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
 import CarmenSanDiegoModeloVistas.ResolviendoCasoViewModel;
 import CarmenSanDiegoVistas.VentanaSeCierraListener;
 
-import java.awt.Label;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -45,6 +46,8 @@ import java.awt.Insets;
 
 public class ResolviendoCaso extends JFrame{
 	private JPanel contentPane;
+	private JPanel panelRecorridoCriminal;
+	private JPanel panelRecorridoFallido;
 	private ResolviendoCasoViewModel modelo;
 /*
 	public static void main(String[] args) {
@@ -72,7 +75,7 @@ public class ResolviendoCaso extends JFrame{
 		contentPane.setLayout(null);
 		
 		//etiqueta donde se encuentra
-		Label labelPaisActual = new Label("Estan en "+modelo.obtenerNombrePaisActual());
+		JLabel labelPaisActual = new JLabel("Estan en "+modelo.obtenerNombrePaisActual());
 		labelPaisActual.setBounds(50, 0, 400, 50);
 		contentPane.add(labelPaisActual);
 		
@@ -83,7 +86,7 @@ public class ResolviendoCaso extends JFrame{
 		contentPane.add(panelLugares);
 		
 		//etiqueta lugares
-		Label labelLugares= new Label("Lugares");
+		JLabel labelLugares= new JLabel("Lugares");
 		labelLugares.setBounds(50, 0, 200, 20);
 		panelLugares.add(labelLugares);
 		
@@ -102,6 +105,15 @@ public class ResolviendoCaso extends JFrame{
 					try {
 						VisitarLugar visitarLugar = new VisitarLugar(modelo.obtenerCaso(), modelo.obtenerDetective(), lugar);
 						visitarLugar.setVisible(true);
+						
+						visitarLugar.addWindowListener(new WindowAdapter() {
+							@Override
+							public void windowClosed(WindowEvent e) {
+								modelo.actualizarListaPaisesOKYFallidos();
+								actualizarFrame(listaDeLugares, labelPaisActual);
+							}
+						});
+						
 					} catch( GameOverException e1 ) {
 						JOptionPane.showMessageDialog(null, "Perdio: "+e1.toString());
 						dispose();
@@ -121,7 +133,7 @@ public class ResolviendoCaso extends JFrame{
 		panelAcciones.setLayout(null);
 		contentPane.add(panelAcciones);
 		
-		Label acciones = new Label("Acciones");
+		JLabel acciones = new JLabel("Acciones");
 		acciones.setBounds(50, 0,250, 30);
 		panelAcciones.add(acciones);
 		
@@ -129,7 +141,7 @@ public class ResolviendoCaso extends JFrame{
 		orden.setBounds(50, 50, 200, 50);
 		panelAcciones.add(orden);
 		
-		Label ordenEmitida = new Label("Orden emitida: "+modelo.obtenerNombreVillanoEnOrden());
+		JLabel ordenEmitida = new JLabel("Orden emitida: "+modelo.obtenerNombreVillanoEnOrden());
 		ordenEmitida.setBounds(50, 100, 250, 30);
 		panelAcciones.add(ordenEmitida);
 		
@@ -142,34 +154,32 @@ public class ResolviendoCaso extends JFrame{
 		panelAcciones.add(expedientes);
 		
 		//creo panel paises visitados
-		JPanel panelRecorridoCriminal = new JPanel();
+		panelRecorridoCriminal = new JPanel();
 		panelRecorridoCriminal.setBounds(0,330, 300, 250);
-		panelRecorridoCriminal.setLayout(null);
+		panelRecorridoCriminal.setLayout(new BoxLayout(panelRecorridoCriminal, BoxLayout.Y_AXIS));
 		contentPane.add(panelRecorridoCriminal);
 		
-		Label recorrido = new Label("Recorrido por el criminal");
-		recorrido.setBounds(25, 0, 250, 30);
-		recorrido.setBackground(Color.gray);
-		recorrido.setAlignment(Label.CENTER);
+		JLabel recorrido = new JLabel("Recorrido por el criminal");
 		panelRecorridoCriminal.add(recorrido);
 		
-		Label label1 = new Label("agregar paises");
-		label1.setBounds(25, 40, 200, 30);
-		panelRecorridoCriminal.add(label1);
+		for( Pais pais : modelo.obtenerPaisesRecorridoCriminal() ) {
+			JLabel label1 = new JLabel(pais.getNombre());
+			panelRecorridoCriminal.add(label1);
+		}
 		
 		//creo panel paises visitado y no estuvo el criminal
-		JPanel panelRecorridoFallido = new JPanel();
+		panelRecorridoFallido = new JPanel();
 		panelRecorridoFallido.setBounds(300,330, 300, 250);
-		panelRecorridoFallido.setLayout(null);
+		panelRecorridoFallido.setLayout(new BoxLayout(panelRecorridoFallido, BoxLayout.Y_AXIS));
 		contentPane.add(panelRecorridoFallido);
-		Label recorridoFallido = new Label("Destino fallido");
-		recorridoFallido.setBounds(25, 0, 250, 30);
-		recorridoFallido.setBackground(Color.gray);
-		recorridoFallido.setAlignment(Label.CENTER);
+		
+		JLabel recorridoFallido = new JLabel("Destino fallido");
 		panelRecorridoFallido.add(recorridoFallido);
-		Label label2 = new Label("agregar paises");
-		label2.setBounds(25, 40, 200, 30);
-		panelRecorridoFallido.add(label2);
+		
+		for( Pais pais : modelo.obtenerPaisesFallidos() ) {
+			JLabel label1 = new JLabel(pais.getNombre());
+			panelRecorridoCriminal.add(label1);
+		}
 		
 		//funcionalidad a boton Expediente
 		expedientes.addActionListener(new ActionListener() {
@@ -192,7 +202,7 @@ public class ResolviendoCaso extends JFrame{
 				ventanaViajar.addWindowListener(new WindowAdapter() {
 					@Override
 					public void windowClosed(WindowEvent e) {
-						actualizarLugaresYLabelPaisActual(listaDeLugares, labelPaisActual);
+						actualizarFrame(listaDeLugares, labelPaisActual);
 					}
 				});
 			}
@@ -211,6 +221,7 @@ public class ResolviendoCaso extends JFrame{
 					ventanaOrden.addWindowListener(new WindowAdapter() {
 						@Override
 						public void windowClosed(WindowEvent e) {
+							modelo.actualizarListaPaisesOKYFallidos();
 							ordenEmitida.setText("Orden emitida: "+modelo.obtenerNombreVillanoEnOrden());
 						}
 					});
@@ -223,8 +234,24 @@ public class ResolviendoCaso extends JFrame{
 	
 		
 	
-	private void actualizarLugaresYLabelPaisActual(JList<Lugar> listaDeLugares, Label labelPaisActual) {
+	private void actualizarFrame(JList<Lugar> listaDeLugares, JLabel labelPaisActual) {
 		listaDeLugares.setModel(new ResolviendoCasoController(modelo).getLugares());
 		labelPaisActual.setText("Estan en "+modelo.obtenerNombrePaisActual());
+		
+		panelRecorridoCriminal.removeAll();
+		panelRecorridoCriminal.repaint();
+		panelRecorridoCriminal.add(new JLabel("Recorrido por el criminal"));
+		for( Pais pais : modelo.obtenerPaisesRecorridoCriminal() ) {
+			JLabel label1 = new JLabel(pais.getNombre());
+			panelRecorridoCriminal.add(label1);
+		}
+		
+		panelRecorridoFallido.removeAll();
+		panelRecorridoFallido.repaint();
+		panelRecorridoFallido.add(new JLabel("Destino fallido"));
+		for( Pais pais : modelo.obtenerPaisesFallidos() ) {
+			JLabel label1 = new JLabel(pais.getNombre());
+			panelRecorridoFallido.add(label1);
+		}
 	}
 }
