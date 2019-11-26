@@ -1,14 +1,18 @@
 package CarmenSanDiegoModeloVistas;
 
 import java.util.ArrayList;
-
 import CarmenSanDiego.src.Villano;
 
 public class ExpedientesViewModel {
-	private ArrayList<Villano> listaVillanos;
+
+	private ArrayList<Villano> villanos;
 	private Villano villanoSeleccionado;
 	
-	public ExpedientesViewModel(ArrayList<Villano> villanos) {
-		listaVillanos = villanos;
+	public ArrayList<Villano> getVillanos(){
+		return villanos;
+	}
+	public void setVillanoSeleccionado(Villano villanoSelecionado)
+	{
+		this.villanoSeleccionado = villanoSeleccionado;
 	}
 }
