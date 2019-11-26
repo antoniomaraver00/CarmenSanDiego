@@ -25,6 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -41,6 +42,8 @@ public class Expedientes extends JFrame {
 	JLabel lblSexo ;
 	JPanel panelSenias;
 	JPanel panelHobbies;
+	JLabel imgLabel;
+	JPanel centerPane;
 	
 	public Expedientes(ArrayList<Villano> villanos) {
 		this.modelo = new ExpedientesViewModel(villanos);
@@ -70,11 +73,13 @@ public class Expedientes extends JFrame {
 		paneVillanos.add(listaSospechosos);
 		contentPane.add(leftPane, BorderLayout.WEST);
 		
-		JPanel centerPane = new JPanel();
+		centerPane = new JPanel();
 		centerPane.setLayout(new BoxLayout(centerPane, BoxLayout.Y_AXIS));
 		centerPane.setPreferredSize(new Dimension(200, 300)); 
 		
-	    JLabel imgLabel = new JLabel(new ImageIcon("CarmenSanDiegoImagenes/none.png"));
+		ImageIcon originalImage = new ImageIcon("CarmenSanDiegoImagenes/none.jpg");
+		Image resizedImage = originalImage.getImage().getScaledInstance(190, 197, Image.SCALE_DEFAULT);
+	    imgLabel = new JLabel(new ImageIcon(resizedImage));
 	    centerPane.add(imgLabel);
 	    
 		lblNombre = new JLabel("Nombre: ");
@@ -139,11 +144,16 @@ public class Expedientes extends JFrame {
 			panelSenias.add(new JLabel(senia));
 		}
 		panelSenias.repaint();
+		
 		panelHobbies.removeAll();
 		panelHobbies.add(new JLabel("Hobbies"));
 		for (String hobbie : modelo.obtenerHobbies()) {
 			panelHobbies.add(new JLabel(hobbie));
 		}
 		panelHobbies.repaint();
+		
+		ImageIcon originalImage = new ImageIcon(modelo.obtenerRutaImagenPorSexoSeleccionado());
+		Image resizedImage = originalImage.getImage().getScaledInstance(190, 197, Image.SCALE_DEFAULT);
+	    imgLabel.setIcon(new ImageIcon(resizedImage));
 	}
 }
