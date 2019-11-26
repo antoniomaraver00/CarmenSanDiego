@@ -14,7 +14,6 @@ import javax.swing.border.EmptyBorder;
 
 import CarmenSanDiego.src.Villano;
 import CarmenSanDiegoModeloVistas.ExpedientesViewModel;
-import javafx.scene.control.SplitPane;
 
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
@@ -23,7 +22,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import javax.swing.SwingConstants;
@@ -59,15 +57,8 @@ public class Expedientes extends JFrame {
 		centerPane.setLayout(new BoxLayout(centerPane, BoxLayout.Y_AXIS));
 		centerPane.setPreferredSize(new Dimension(200, 300)); 
 		
-		try {
-			URL url = new URL("https://via.placeholder.com/190x197");
-		    BufferedImage image = ImageIO.read(url);
-		    JLabel imgLabel = new JLabel(new ImageIcon(image));
-		    centerPane.add(imgLabel);
-		} catch( IOException e ) {
-			JLabel errorLabel = new JLabel("Error: Imagen no encontrada...");
-			centerPane.add(errorLabel);
-		}
+	    JLabel imgLabel = new JLabel(new ImageIcon("CarmenSanDiegoImagenes/none.png"));
+	    centerPane.add(imgLabel);
 	    
 		JLabel lblNombre = new JLabel("Nombre: asd");
 		centerPane.add(lblNombre);
