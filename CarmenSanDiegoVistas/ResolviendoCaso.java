@@ -115,11 +115,11 @@ public class ResolviendoCaso extends JFrame{
 						});
 						
 					} catch( GameOverException e1 ) {
-						JOptionPane.showMessageDialog(null, "Perdio: "+e1.toString());
+						JOptionPane.showMessageDialog(null, e1.getMessage().toString());
 						dispose();
 						modelo.obtenerPreviousFrame().setVisible(true);
 					} catch( GameWonException e2 ) {
-						JOptionPane.showMessageDialog(null, "Gano, atrapo al malechor: "+e2.toString());
+						JOptionPane.showMessageDialog(null, e2.getMessage().toString());
 						dispose();
 						modelo.obtenerPreviousFrame().setVisible(true);
 					}
