@@ -8,8 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+
 
 import CarmenSanDiego.src.Villano;
 import CarmenSanDiegoControladores.ExpedientesController;
@@ -23,9 +22,7 @@ import javax.swing.JList;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.SwingConstants;
-
 public class Expedientes extends JFrame {
 
 	private JPanel contentPane;
@@ -46,7 +43,6 @@ public class Expedientes extends JFrame {
 			}
 		});
 	}
-
 	/**
 	 * Create the frame.
 	 */
@@ -57,30 +53,11 @@ public class Expedientes extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
-		
-		JList <Villano> listaVillanos = new JList<Villano>();
-		listaVillanos.setBounds(10, 53, 173, 183);
-		listaVillanos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listaVillanos.setModel((ListModel<Villano>) controller.getModelo().getVillanos());
-		contentPane.add(listaVillanos);
-		
-		listaVillanos.addListSelectionListener(new ListSelectionListener() {
 
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				Villano villano = listaVillanos.getSelectedValue();
-				if (villano != null) {
-					seSelecciono(villano);
-				}
+		JScrollPane scrollPaneVillanos = new JScrollPane();
+		scrollPaneVillanos.setBounds(10, 53, 173, 183);
+		contentPane.add(scrollPaneVillanos);
 
-			}
-
-			private void seSelecciono(Villano villano) {
-				controller.getModelo().setVillanoSeleccionado(villano);
-			}
-
-		});
-	
 		JLabel lblVillanos = new JLabel("VILLANOS");
 		lblVillanos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVillanos.setFont(new Font("Times New Roman", Font.PLAIN, 16));
