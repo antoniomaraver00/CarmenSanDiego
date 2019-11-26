@@ -38,10 +38,12 @@ public class ElegirCaso extends JFrame{
 	private JFrame elegirCasoFrame;
 	
 	public ElegirCaso(String nombre) {
+		setAlwaysOnTop(true);
+		setAutoRequestFocus(false);
 		elegirCasoFrame = this;
 		crearModelo(nombre);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 500, 580, 600);
+		setBounds(0, 0, 580, 600);
 		contentPane = new JPanel();
 	    
 	    contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
