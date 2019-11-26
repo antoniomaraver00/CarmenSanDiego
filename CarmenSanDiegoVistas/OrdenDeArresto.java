@@ -6,8 +6,10 @@ import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -15,14 +17,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.sun.glass.events.WindowEvent;
 
 import CarmenSanDiego.src.Detective;
 import CarmenSanDiego.src.Villano;
 import CarmenSanDiegoControladores.OrdenControlador;
-import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
 import CarmenSanDiegoModeloVistas.OrdenViewModel;
-import CarmenSanDiegoModeloVistas.ResolviendoCasoViewModel;
 
 public class OrdenDeArresto extends JFrame {
 	OrdenViewModel modelo;
@@ -48,10 +47,19 @@ public class OrdenDeArresto extends JFrame {
 		OrdenControlador controlador = new OrdenControlador(modelo);
 		ArrayList<String> nombreVillanos= controlador.obtenerNombreVillanos();
 		
-		JComboBox villanos = new JComboBox();
+		JComboBox villanos = new JComboBox<Villano>();
+		
+		//DefaultComboBoxModel<Villano> dcbmVillano = new DefaultComboBoxModel<Villano>();
+		/*for (Villano sospechoso : modelo.obtenerSospechosos()) {
+			dcbmVillano.addElement(sospechoso);
+		}}*/
+		villanos.setModel(new DefaultComboBoxModel<Villano>(new Vector<Villano>(modelo.obtenerSospechosos())));
+		//villanos.setModel(dcbmVillano);;
+		
+		/*
 		for(int i=0; i<nombreVillanos.size(); i++) {
 			villanos.addItem(nombreVillanos.get(i));
-		}
+		}*/
 		villanos.setBounds(50,70, 280, 40);
 		
 		contentPane.add(villanos);
@@ -78,6 +86,8 @@ public class OrdenDeArresto extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+		
 				String mensaje = "Desea generar la orden a "+nombreVillanos.get(villanos.getSelectedIndex())+"?";
 				int confirmacion = JOptionPane.showConfirmDialog(null, mensaje, "Confirmar orden", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if(confirmacion == JOptionPane.YES_OPTION) {

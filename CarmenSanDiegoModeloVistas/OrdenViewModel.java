@@ -17,6 +17,11 @@ public class OrdenViewModel {
 	public ArrayList<Villano> obtenerSospechosos() {
 		return sospechosos;
 	}
+	
+	public Villano[] obtenerSospechososArray() {
+		return (Villano[]) sospechosos.toArray();
+	}
+	
 
 	public Detective obtenerDetective() {
 		return detective;
