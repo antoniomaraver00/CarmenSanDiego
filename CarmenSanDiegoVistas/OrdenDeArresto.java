@@ -17,13 +17,15 @@ import javax.swing.border.EmptyBorder;
 
 import com.sun.glass.events.WindowEvent;
 
+import CarmenSanDiego.src.Detective;
 import CarmenSanDiego.src.Villano;
 import CarmenSanDiegoControladores.OrdenControlador;
 import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
+import CarmenSanDiegoModeloVistas.OrdenViewModel;
 import CarmenSanDiegoModeloVistas.ResolviendoCasoViewModel;
 
 public class OrdenDeArresto extends JFrame {
-	ResolviendoCasoViewModel modelo;
+	OrdenViewModel modelo;
 	private JPanel contentPane;
 
 	/**
@@ -46,15 +48,16 @@ public class OrdenDeArresto extends JFrame {
 	 * Create the frame.
 	 * @param modelo 
 	 */
-	public OrdenDeArresto(ResolviendoCasoViewModel modelo) {
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public OrdenDeArresto(ArrayList<Villano> sospechosos, Detective detective) {
+		this.modelo = new OrdenViewModel(sospechosos, detective);
+		
 		setBounds(100, 100, 450, 230);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
-		this.modelo = modelo;
-		Label label = new Label("seleccione villano contra quien emitira la orden");
+		
+		Label label = new Label("Seleccione villano contra quien emitira la orden");
 		label.setBounds(50, 0, 400, 50);
 		contentPane.add(label);
 		
@@ -91,7 +94,7 @@ public class OrdenDeArresto extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String mensaje = "desea generar la orden a "+nombreVillanos.get(villanos.getSelectedIndex())+"?";
+				String mensaje = "Desea generar la orden a "+nombreVillanos.get(villanos.getSelectedIndex())+"?";
 				int confirmacion = JOptionPane.showConfirmDialog(null, mensaje, "Confirmar orden", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if(confirmacion == JOptionPane.YES_OPTION) {
 					controlador.generarOrden(nombreVillanos.get(villanos.getSelectedIndex()));

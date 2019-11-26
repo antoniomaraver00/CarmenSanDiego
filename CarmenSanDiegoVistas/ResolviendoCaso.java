@@ -206,7 +206,7 @@ public class ResolviendoCaso extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(modelo.obtenerDetective().getSospechosoEnOrden()==null) {
-					OrdenDeArresto ventanaOrden = new OrdenDeArresto(modelo);
+					OrdenDeArresto ventanaOrden = new OrdenDeArresto(modelo.obtenerCaso().getSospechosos(), modelo.obtenerDetective());
 					ventanaOrden.setVisible(true);
 					ventanaOrden.addWindowListener(new WindowAdapter() {
 						@Override
