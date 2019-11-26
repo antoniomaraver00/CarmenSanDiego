@@ -30,25 +30,7 @@ public class Viajar extends JFrame {
 	private JPanel contentPane;
 	private Detective detective;
 
-	/**
-	 * Launch the application.
-	 *
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Viajar frame = new Viajar();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public Viajar(Detective detective) {
 		this.detective = detective;
 		
