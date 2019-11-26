@@ -14,7 +14,6 @@ public class ResolviendoCasoViewModel {
 	private Detective detective;
 	private ArrayList<Pais> paisesRecorridoCriminal;
 	private ArrayList<Pais> paisesFallidos;
-	private JFrame previousFrame;
 	
 	public ArrayList<Pais> obtenerPaisesRecorridoCriminal() {
 		return paisesRecorridoCriminal;
@@ -24,11 +23,10 @@ public class ResolviendoCasoViewModel {
 		return paisesFallidos;
 	}
 
-	public ResolviendoCasoViewModel(Caso caso, String nombre, JFrame previousFrame) {
+	public ResolviendoCasoViewModel(Caso caso, String nombre) {
 		this.caso = caso;
 		this.detective = new Detective(caso.getPaisInicio());
 		this.detective.setNombre(nombre);
-		this.previousFrame = previousFrame;
 		paisesRecorridoCriminal = new ArrayList<Pais>();
 		paisesFallidos = new ArrayList<Pais>();
 		
@@ -60,10 +58,6 @@ public class ResolviendoCasoViewModel {
 	
 	public String obtenerNombrePaisActual() {
 		return detective.getPaisActual().getNombre();
-	}
-
-	public JFrame obtenerPreviousFrame() {
-		return previousFrame;
 	}
 
 	public Caso obtenerCaso() {

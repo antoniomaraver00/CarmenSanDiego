@@ -40,4 +40,8 @@ public class ExpedientesViewModel {
 	public ArrayList<String> obtenerHobbies() {
 		return villanoSeleccionado.getHobbies();
 	}
+	
+	public Villano obtenerPrimerVillanoSeleccionado() {
+		return villanos.get(0);
+	}
 }

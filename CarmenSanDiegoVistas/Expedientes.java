@@ -10,7 +10,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -19,7 +18,6 @@ import CarmenSanDiego.src.Villano;
 import CarmenSanDiegoControladores.ExpedientesController;
 import CarmenSanDiegoModeloVistas.ExpedientesViewModel;
 
-import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -28,8 +26,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.SwingConstants;
@@ -46,7 +42,7 @@ public class Expedientes extends JFrame {
 	JPanel centerPane;
 	
 	public Expedientes(ArrayList<Villano> villanos) {
-		this.modelo = new ExpedientesViewModel(villanos);
+		modelo = new ExpedientesViewModel(villanos);
 		
 		setBounds(100, 100, 700, 500);
 		contentPane = new JPanel();
@@ -133,6 +129,9 @@ public class Expedientes extends JFrame {
 			}
 	
 		});
+
+		modelo.setVillanoSeleccionado(modelo.obtenerPrimerVillanoSeleccionado());
+		actualizaVista();
 	}
 	
 	private void actualizaVista() {

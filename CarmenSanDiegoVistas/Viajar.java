@@ -1,8 +1,6 @@
 package CarmenSanDiegoVistas;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 
 import java.awt.Label;
 import java.util.ArrayList;
@@ -11,7 +9,6 @@ import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
@@ -20,7 +17,6 @@ import javax.swing.event.ListSelectionListener;
 import CarmenSanDiego.src.Detective;
 import CarmenSanDiego.src.Pais;
 import CarmenSanDiegoControladores.ViajarController;
-import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;

@@ -20,6 +20,8 @@ import javax.swing.event.ListSelectionListener;
 
 import CarmenSanDiego.src.Caso;
 import CarmenSanDiego.src.Detective;
+import CarmenSanDiego.src.GameOverException;
+import CarmenSanDiego.src.GameWonException;
 import CarmenSanDiego.src.Lugar;
 import CarmenSanDiego.src.Pais;
 import CarmenSanDiegoControladores.ViajarController;
@@ -27,6 +29,7 @@ import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
 import CarmenSanDiegoModeloVistas.VisitarLugarViewModel;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
 import javax.swing.JLabel;
@@ -40,25 +43,6 @@ public class VisitarLugar extends JFrame{
 	private JPanel contentPane;
 	private VisitarLugarViewModel modelo;
 
-	/**
-	 * Launch the application.
-	 *
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Viajar frame = new Viajar();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VisitarLugar(Caso caso, Detective detective, Lugar lugar) {
 		setBounds(100, 100, 450, 300);
 		this.modelo = new VisitarLugarViewModel(caso, detective, lugar);
@@ -71,7 +55,15 @@ public class VisitarLugar extends JFrame{
 		JLabel lblLugarVisitado= new JLabel("Estas visitando:" +modelo.obtenerNombreLugarSeleccionado());
 		contentPane.add(lblLugarVisitado);
 		
-		ArrayList<String> pistas = modelo.obtenerPistas();
+		ArrayList<String> pistas;
+		
+		try {
+			pistas = modelo.obtenerPistas();
+		} catch(GameOverException | GameWonException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage().toString());
+			
+			throw new CerrarVentanaException();
+		}
 		
 		for( String pista : pistas ) {
 			JLabel lblPista = new JLabel(pista);

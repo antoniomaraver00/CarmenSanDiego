@@ -1,14 +1,10 @@
 package CarmenSanDiegoVistas;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -21,7 +17,6 @@ import javax.swing.border.EmptyBorder;
 
 import CarmenSanDiego.src.Detective;
 import CarmenSanDiego.src.Villano;
-import CarmenSanDiegoControladores.OrdenControlador;
 import CarmenSanDiegoModeloVistas.OrdenViewModel;
 
 public class OrdenDeArresto extends JFrame {
@@ -74,7 +69,9 @@ public class OrdenDeArresto extends JFrame {
 				String mensaje = "Desea generar la orden a "+villanos.getSelectedItem().toString()+"?";
 				int confirmacion = JOptionPane.showConfirmDialog(null, mensaje, "Confirmar orden", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if(confirmacion == JOptionPane.YES_OPTION) {
-					modelo.obtenerDetective().generarOrden((Villano)villanos.getSelectedItem());
+					// el seleccionado que lo guarde el view model y aca que solo diga modelo, generarOrdenDeArresto()
+					modelo.setVillanoSeleccionado((Villano)villanos.getSelectedItem());
+					modelo.generarOrdenDeArresto();
 					dispose();
 				}	
 			}
