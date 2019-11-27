@@ -13,7 +13,7 @@ import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
 
 
 
-public class TestElegirCasoViewModel {
+public class TestElegirCasoViewModel{
 @Test
 
 public void setCasoSeleccionadoRandom_EstaDentroDeListaDeCasos() {
