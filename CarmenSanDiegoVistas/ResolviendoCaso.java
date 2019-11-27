@@ -1,70 +1,40 @@
 package CarmenSanDiegoVistas;
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import CarmenSanDiego.src.Caso;
-import CarmenSanDiego.src.Detective;
 import CarmenSanDiego.src.GameOverException;
 import CarmenSanDiego.src.GameWonException;
 import CarmenSanDiego.src.Lugar;
 import CarmenSanDiego.src.Pais;
-import CarmenSanDiego.src.Villano;
 import CarmenSanDiegoControladores.ResolviendoCasoController;
-import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
 import CarmenSanDiegoModeloVistas.ResolviendoCasoViewModel;
-import CarmenSanDiegoVistas.VentanaSeCierraListener;
 
-import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.Component;
-import java.awt.Dialog;
-import java.awt.Dimension;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 
 public class ResolviendoCaso extends JFrame{
 	private JPanel contentPane;
 	private JPanel panelRecorridoCriminal;
 	private JPanel panelRecorridoFallido;
 	private ResolviendoCasoViewModel modelo;
-/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ResolviendoCaso frame = new ResolviendoCaso();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	*/
+	private JFrame previousFrame;
+	
 	public ResolviendoCaso(Caso caso, String nombreDetective, JFrame previousFrame) {
-		this.modelo = new ResolviendoCasoViewModel(caso, nombreDetective, previousFrame);
+		this.modelo = new ResolviendoCasoViewModel(caso, nombreDetective);
+		this.previousFrame = previousFrame;
+		
 		setTitle("Resolviendo robo: "+modelo.obtenerCaso().getObjeto());
 		setSize(600, 600);
 		setLocationRelativeTo(null);
@@ -114,14 +84,9 @@ public class ResolviendoCaso extends JFrame{
 							}
 						});
 						
-					} catch( GameOverException e1 ) {
-						JOptionPane.showMessageDialog(null, e1.getMessage().toString());
+					} catch( CerrarVentanaException ex  ) {
 						dispose();
-						modelo.obtenerPreviousFrame().setVisible(true);
-					} catch( GameWonException e2 ) {
-						JOptionPane.showMessageDialog(null, e2.getMessage().toString());
-						dispose();
-						modelo.obtenerPreviousFrame().setVisible(true);
+						previousFrame.setVisible(true);
 					}
 				}
 			}
