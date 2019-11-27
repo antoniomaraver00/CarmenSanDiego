@@ -11,8 +11,6 @@ import CarmenSanDiego.src.Caso;
 import CarmenSanDiegoModeloVistas.ElegirCasoViewModel;
 
 
-
-
 public class TestElegirCasoViewModel{
 @Test
 
