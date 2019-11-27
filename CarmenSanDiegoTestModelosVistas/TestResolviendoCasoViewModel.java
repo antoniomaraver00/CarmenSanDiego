@@ -11,7 +11,7 @@ import CarmenSanDiegoModeloVistas.ResolviendoCasoViewModel;
 public class TestResolviendoCasoViewModel {
 
 	@Test
-	public void actualizarListaPaisesOKYFallidosAgregoPaisFallido() {
+	public void actualizarListaPaisesOKYFallidos_AgregoPaisFallidoDeberiaAgregarseAListaFallidos() {
 		Caso caso = Mockito.mock(Caso.class);
 		Pais pais = Mockito.mock(Pais.class);
 		Mockito.when(caso.getPaisInicio()).thenReturn(pais);
@@ -24,7 +24,7 @@ public class TestResolviendoCasoViewModel {
 	}
 	
 	@Test
-	public void actualizarListaPaisesOKYFallidosAgregoPaisRecorridoPorElCriminal() {
+	public void actualizarListaPaisesOKYFallidos_AgregoPaisRecorridoPorElCriminalDeberiaAgregarseAListaRecorridoCriminal() {
 		Caso caso = Mockito.mock(Caso.class);
 		Pais pais = Mockito.mock(Pais.class);
 		Mockito.when(caso.getPaisInicio()).thenReturn(pais);
