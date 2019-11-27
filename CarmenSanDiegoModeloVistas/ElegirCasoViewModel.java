@@ -1,9 +1,7 @@
 package CarmenSanDiegoModeloVistas;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import javax.swing.JFrame;
 
 import CarmenSanDiego.src.Caso;
 import CarmenSanDiego.src.Detective;

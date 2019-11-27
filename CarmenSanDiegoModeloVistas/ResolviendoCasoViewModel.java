@@ -77,4 +77,12 @@ public class ResolviendoCasoViewModel {
 			}
 		}
 	}
+
+	public ArrayList<Pais> getPaisesRecorridoCriminal() {
+		return paisesRecorridoCriminal;
+	}
+
+	public ArrayList<Pais> getPaisesFallidos() {
+		return paisesFallidos;
+	}
 }
